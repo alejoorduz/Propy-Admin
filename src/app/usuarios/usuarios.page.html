@@ -1,0 +1,45 @@
+
+<ion-content>
+  <div class="headercontainer">
+    <div class="back">
+      <ion-icon name="arrow-back" class="iconoback" (click)="dismiss()"></ion-icon>
+    </div>
+    <div class="headertittle">
+      Usuarios 
+    </div>
+  </div>
+
+<div class="todo">
+    <div class="ver_comunicados">
+            <h1 class="texto">Usuarios del Edificio {{this.proyecto}}</h1>
+            <ion-grid class="grid">
+              <ion-col class="col">
+                <ion-row class="row" *ngFor="let usuario of usuarios">
+                    <div class="card">
+                      <div class="top">
+                        <div class="titulo">  
+                          <strong>{{ usuario.id }}</strong>  
+                        </div>
+                        <!-- <div class="dia_hora">  
+                          <div class="dia">
+                              {{ comunicado.data.dia }}  
+                          </div>
+                          <div class="hora">
+                            {{ comunicado.data.hora }} 
+                        </div>
+                        </div> -->
+                    </div>
+                      <!-- <div class="tema">
+                        Tema:  {{comunicado.data.tema}} 
+                      </div>
+                      <div class="reporte">
+                        {{comunicado.data.reporte}} 
+                    </div> -->
+                       <!-- <ion-icon class="trash-icon" (click)="delete(usuario.id)" name="trash-outline"></ion-icon> -->
+                  </div>
+                </ion-row>
+              </ion-col>
+            </ion-grid>
+    </div> 
+</div>
+</ion-content>

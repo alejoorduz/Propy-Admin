@@ -1,0 +1,67 @@
+.atencion{
+    display: flex;
+   // border-bottom: 2px solid black;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    font-size: 6vw;
+    height: 20px;
+    //background-color: rebeccapurple;
+}
+
+.titulo{
+    //background-color: red;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.descripcion{
+//background-color: pink;
+display: flex;
+justify-content: center;
+height: 50px;
+align-content: center;
+
+//margin-top: 20px;
+}
+
+.boton{
+    display: inline-block;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: rgb(255, 153,81);
+    border: 2px solid black;
+    border-radius: 45px;
+    box-shadow: 0 3px black ;
+}
+
+.boton:active {
+    background-color: #BB7D00  ;
+    box-shadow: 0 5px #666;
+    transform: translateY(6px);
+  }
+
+.botonuno{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 30%;
+    //background-color: aliceblue
+}
+
+.botondos{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 30%;
+    //background-color: aqua;
+}

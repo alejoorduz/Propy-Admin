@@ -3,8 +3,15 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+  --ion-font-family: 'Questrial';
+
+  --ion-color-button: #00d460;
+
+  --ioon-color-header: rgb(112, 51, 204);
+
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: rgb(236,166,64);
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -12,7 +19,7 @@
   --ion-color-primary-tint: #4c8dff;
 
   /** secondary **/
-  --ion-color-secondary: #3dc2ff;
+  --ion-color-secondary: #ffffff;
   --ion-color-secondary-rgb: 61, 194, 255;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
@@ -74,6 +81,13 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+}
+
+@font-face {
+  font-family: 'Questrial';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/Questrial-Regular.ttf');
 }
 
 @media (prefers-color-scheme: dark) {

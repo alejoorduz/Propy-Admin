@@ -1,0 +1,191 @@
+
+<ion-content padding>
+
+  <div class="headercontainer">
+      <div class="back">
+        <ion-icon name="business-outline" class="iconoback" (click)="dismiss()"></ion-icon>
+      </div>
+  <div class="headertittle">
+    <ion-title ></ion-title>
+  </div>
+  <div class="headericon">
+     <!-- <ion-icon class="icono" name="person-circle-outline" (click)="this.getLocation()"></ion-icon> -->
+    </div>
+  </div>
+  <img class="imagen" src="../../assets/images/security.png" alt="">
+  <div class="todo">
+  <div class="parrafo">
+  <h1 class="parrafo__texto">Bienvenido {{this.nombre}} </h1>
+  <h1 class="parrafo__texto">Estos son los servicios que  {{this.proyecto}}  ofrece</h1>
+  </div>
+  
+  <!-- 
+    <ion-slides pages pager="true" [options]="option">
+      <ion-slide class="slide">
+        <h1>Slide 1</h1>
+      </ion-slide>
+      <ion-slide class="slide2">
+        <h1>Slide 2</h1>
+      </ion-slide>
+      <ion-slide class="slide">
+        <h1>Slide 3</h1>
+      </ion-slide>
+    </ion-slides> -->
+  
+    <div class="slider">
+  <ion-slides [options]="option" #slideWithNav pager="true" (ionSlideDidChange)="slide_change()">
+    <ion-slide *ngIf="reserva==true" class="slide">
+      <ion-card  (click)="this.elegir_servicio('reservas')">
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>Reservas</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="calendar-outline"></ion-icon>
+          <h1 class="descripcion">Gestiona las reservas de los diferentes servicios que ofrece tu negocio</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  
+     <ion-slide *ngIf="pagos==true" class="slide">
+      <ion-card (click)="this.elegir_servicio('pagos')">
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>Pagos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="cash-outline"></ion-icon>
+          <h1 class="descripcion">Configura el link para algun tipo de pago como por ejemplo, el pago de la administración</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  
+     <ion-slide *ngIf="comunicado==true" class="slide">
+      <ion-card (click)="this.elegir_servicio('comunicados')">
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>Comunicados</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="newspaper-outline"></ion-icon>
+          <h1 class="descripcion">Postea comunicados que tus usuarios podran leer</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  
+     <ion-slide *ngIf="documento==true" class="slide">
+      <ion-card (click)="this.elegir_servicio('documentos')">
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>Documentos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="document-attach-outline"></ion-icon> 
+          <h1 class="descripcion">Sube algun tipo de documento que el usuario podra descargar, por ejemplo un Menú!</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  
+     <ion-slide *ngIf="monitoreo==true" class="slide">
+      <ion-card  (click)="this.elegir_servicio('monitoreo')">
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>Monitoreo</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="business-outline"></ion-icon>
+          <h1 class="descripcion">Ten control de tus intereses con los equipos especializados de monitoreo</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  
+     <ion-slide *ngIf="seguridad==true" class="slide">
+      <ion-card (click)="this.elegir_servicio('seguridad')">
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>Seguridad</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="shield-half-outline"></ion-icon>
+          <h1 class="descripcion">Revisa los sensores y camaras de tu negocio</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  
+     <ion-slide *ngIf="aircall==true" class="slide">
+      <ion-card  (click)="this.elegir_servicio('aircall')">
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>AirCall</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="keypad-outline"></ion-icon>
+          <h1 class="descripcion">Controla el Ascensor</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  
+     <ion-slide *ngIf="usuarios==true" class="slide">
+      <ion-card  (click)="this.elegir_servicio('usuarios')">
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>Usuarios</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="people-outline"></ion-icon>
+          <h1 class="descripcion">Gestiona los usuarios que hacen uso de {{this.proyecto}}</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  
+     <ion-slide *ngIf="emergencias==true" class="slide">
+      <ion-card  (click)="this.elegir_servicio('emergencias')" >
+        <ion-card-header>
+          <ion-card-subtitle>Servicios</ion-card-subtitle>
+          <ion-card-title>Emergencia 24/7</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon class="icon" name="notifications-circle-outline"></ion-icon>
+          <h1 class="descripcion">Contacto directo con Call-Center por emergencias en el ascensor.</h1>
+        </ion-card-content>
+      </ion-card>
+     </ion-slide>
+  </ion-slides>
+  </div> 
+  
+  
+  
+  <!-- 
+    <ion-grid class="grid">
+      <ion-row class="row" >
+        <ion-col class="columna">
+          <button class="boton_servicios" *ngIf="reserva==true" (click)="this.elegir_servicio('reservas')"> Reservas </button>
+        </ion-col>
+        <ion-col class="columna">
+          <button class="boton_servicios" *ngIf="pagos==true" (click)="this.elegir_servicio('pagos')"> Pagos </button>
+        </ion-col>
+        <ion-col class="columna">
+          <button class="boton_servicios" *ngIf="comunicado==true" (click)="this.elegir_servicio('comunicados')"> Comunicados </button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="row" >
+        <ion-col class="columna">
+          <button class="boton_servicios" *ngIf="documento==true" (click)="this.elegir_servicio('documentos')"> Documentos </button>
+        </ion-col>
+        <ion-col class="columna">
+          <button class="boton_servicios" *ngIf="mascotas==true" (click)="this.elegir_servicio('mascotas')"> Ingreso mascotas </button>
+        </ion-col>
+        <ion-col class="columna">
+          <button class="boton_servicios" *ngIf="monitoreo==true" (click)="this.elegir_servicio('monitoreo')"> Monitoreo </button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="row" >
+        <ion-col class="columna">
+          <button class="boton_servicios" *ngIf="seguridad==true" (click)="this.elegir_servicio('seguridad')"> Seguridad </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+  
+  </div>
+  </ion-content>
+  

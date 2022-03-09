@@ -1,0 +1,98 @@
+<!-- <ion-header class="header">
+  <ion-toolbar>
+
+  </ion-toolbar>/   /      
+</ion-header> -->
+
+
+<ion-content> 
+  <div class="headercontainer">
+    <div class="back">
+      <ion-icon name="arrow-back" class="iconoback" (click)="dismiss()"></ion-icon>
+    </div>
+  <div class="headertittle">
+     Reservas
+  </div>
+|<div class="headericon">
+   <ion-icon class="icono_mas" id="plus" *ngIf="boton_atras" name="add-outline" (click)="this.open_add_reservas()"></ion-icon>
+   <ion-icon name="remove-outline" id="minus" (click)="this.open_add_reservas()" class="icono_menos" *ngIf="boton_atras"></ion-icon>
+  </div>
+</div>
+<img class="imagen" src="../../assets/images/calendar.png" alt="">
+<div class="todo">
+ <h1 class="texto" *ngIf="boton_dia">Reservas de {{this.servicio }} en {{this.proyecto}}  </h1>
+ <h1 class="texto" style="height: 10px; font-size: clamp(5px, 2.9vw, 15px);" *ngIf="boton_atras"><i>Para hacer una reserva a nombre de alguien oprime en el simbolo de '+' </i> </h1>
+ <div class="colors">
+    <h1 class="color_reserva" *ngIf="boton_dia">Reservas</h1>
+    <h1 class="color_selecc" *ngIf="boton_dia">Selección</h1>
+    <h1 class="color_actual" *ngIf="boton_dia">Hoy</h1>
+ </div>
+
+ <div class="formulario" *ngIf="this.mostrar_add_event"> 
+  <h1 class="hora_seleccionada">Reserva para el <strong>{{this.dia_seleccionado}} </strong> a las <strong style="font-size: 30px;">{{this.hora_seleccionada}} </strong></h1>
+    <ion-item class="nombre_servicio" mode='ios'>
+      <ion-label class="formulario__label" position="floating" >Reservar a nombre de:</ion-label>
+      <ion-input type="text" id="a_nombre" placeholder="ej: Alejandro Lopez" name="servicio"></ion-input>
+    </ion-item>
+    <button class="boton_reservar" *ngIf="boton_atras" (click)="addNewEvent()">Reservar</button>
+</div>
+
+<div class="eliminar_evento" *ngIf="this.eliminar_evento">
+  <div class="evento">{{this.evento_tittle}}  </div>
+  <div class="icono"> <ion-icon class="trash-icon" (click)="delete()" name="trash-outline"></ion-icon></div>
+</div>
+
+ <div class="calendar_tittle">
+  <h1>{{ viewTitle }}</h1>
+</div>
+
+ <div class="segment">
+  <ion-segment class="boton_segment" >
+    <ion-segment-button class="boton_month" (click) ="cal_mode('month')">
+      <ion-label>Mes</ion-label>
+    </ion-segment-button >
+    <ion-segment-button  class="boton_week" (click) ="cal_mode('week')">
+      <ion-label>Semana</ion-label>
+    </ion-segment-button>
+    <ion-segment-button class="boton_day" (click) ="cal_mode('day')">
+      <ion-label>Dia</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+ </div>
+
+
+  <!-- <button class="boton_reservar" *ngIf="boton_atras" (click)="addNewEvent()">Reservar</button> -->
+
+
+
+  <div class="calendar">
+    <!-- <ng-template #template let-view="view" let-row="row" let-col="col"> ----   [markDisabled]="markDisabled"  (onRangeChanged)="reloadSource(startTime, endTime)"
+      <div class="event"> {{view.dates[row*7+col].label}}</div>  class="calendar-day {{ view.dates[row*7+col].events[0]?.color }}"
+    </ng-template> -->
+
+    <ng-template #template let-view="view" let-row="row" let-col="col">
+      <div class="event">
+        {{view.dates[row*7+col].label}}
+      </div>
+    </ng-template>
+    <calendar id="calendar" 
+    [monthviewDisplayEventTemplate]="template"
+            [eventSource]="eventSource"
+            [calendarMode]="calendar.mode"
+            [currentDate]="calendar.currentDate"
+          
+            (onCurrentDateChanged)="onCurrentDateChanged($event)"
+           
+            (onEventSelected)="onEventSelected($event)"
+            (onTitleChanged)="onViewTitleChanged($event)"
+            (onTimeSelected)="onTimeSelected($event)"
+            [timeInterval]="60"
+            [startHour]= "hora_inicial"
+            [endHour]= "hora_final"
+            [locale]="calendar.locale"
+            [step]="calendar.step">          
+    </calendar>
+  </div>
+</div>
+
+</ion-content>

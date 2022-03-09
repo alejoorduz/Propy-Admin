@@ -1,5 +1,7 @@
 {
   "name": "PropyAdmin",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

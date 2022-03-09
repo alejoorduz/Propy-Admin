@@ -1,0 +1,337 @@
+//HEADER-------------------------------------------------
+ion-header{
+    background-color: var(--ion-color-primary);
+    color: black;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    }
+  
+  
+  .headercontainer{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   // background-color: orangered;
+  }
+  
+  
+  .back{
+      width: 20%;
+      height: 40px;   
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .headertittle{
+    //margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    width: 60%;
+    height: 100%;
+    text-align: center;
+    color: black;
+   // background-color: yellow;
+  }
+  
+  .headericon{
+    width: 30%;
+    height: 60px;
+    text-align: center;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //background-color: orangered;
+  }
+  
+  .icono{
+    margin-top: 10px;
+    width: 60%;
+    height: 60%;
+    color: black;
+  }
+  
+  .iconoback{
+    margin-top: 10px;
+    width: 80%;
+    height: 80%;
+    color: black;
+  }
+  //--------------------------------------------------
+
+  .todo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+  }
+
+
+.calendar{
+  //margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    background-color: rgba(163, 155, 40, 0.548);
+  }
+
+  .calendar_tittle{
+    color: white;
+    margin-top: 15px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    font-size: clamp(5px, 2.8vw, 10px);;
+    background-color: rgb(112, 51, 204);
+    border: solid black 2px;
+  }
+
+// .center_container{
+//     dis
+// }
+
+.segment{
+ // margin-top: 20px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+ // max-width: 200px;
+}
+
+.boton_segment{
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: solid black 1px;
+  //  height: 30px;
+   // background-color: rgb(240, 236, 26);
+}
+
+.boton_month{
+    width: 15%;
+    height: 30%;
+    //background-color: rgb(24,185,133);
+    background-color: rgba(112, 51, 204, 0.1);
+    border: solid black 1px;
+    //border-radius: 40px;
+    font-size: clamp(5px, 2.8vw, 15px);
+    color: black;
+}
+
+.boton_week{
+  width: 15%;
+  height: 50%;
+  background-color: rgba(112, 51, 204, 0.6);
+  //background-color: rgba(112, 51, 204, 0.459);
+  border: solid black 1px;
+  //border-radius: 40px;
+  font-size: clamp(5px, 2.8vw, 15px);
+  color: black;
+}
+
+.boton_day{
+  width: 15%;
+  height: 10%;
+  background-color: rgba(112, 51, 204, 0.6);
+  //background-color: rgba(112, 51, 204, 0.459);
+  border: solid black 1px;
+  //border-radius: 40px;
+  font-size: clamp(5px, 2.8vw, 15px);
+  color: black;
+}
+
+.texto{
+  max-width: 300px;
+    font-size: clamp(5px, 3.5vw, 20px);
+    text-align: center;
+}
+
+.boton_reservar{
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: crimson;
+    color: white;
+}
+
+.no_event{
+    background-color: rgb(0, 255, 234);
+    width: 100%;
+    height: 100%;
+} 
+.event{
+   // background-color: red;
+    width: 100%;
+    height: 100%;
+}
+
+.colors{
+  margin-top: 20px;
+  max-width: 280px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20px;
+ // background-color: violet;
+}
+
+.color_selecc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(5px, 2.5vw, 10px);
+  text-align: center;
+  background-color: rgb(30, 131, 214);
+  color: white;
+  height: 100%;
+  width: 25%;
+  border: black dashed 1px;
+}
+
+.color_reserva{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--ion-color-primary);
+  font-size: clamp(5px, 2.5vw, 10px);
+  text-align: center;
+  height: 100%;
+  width: 25%;
+  border: black dashed 1px;
+}
+
+.color_actual{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(24,185,133);
+  color: white;
+  font-size:clamp(5px, 2.5vw, 10px);
+  text-align: center;
+  height: 100%;
+  width: 25%;
+  border: black dashed 1px;
+}
+
+.imagen{
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  height: auto;
+  opacity: 0.4;
+}
+
+.boton_reservar{
+  margin-top: 10px;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: crimson;
+  color: white;
+}
+
+.hora_seleccionada{
+  max-width: 300px;
+  font-size: clamp(5px, 3.5vw, 20px);
+  text-align: center;
+ // background-color: var(--ion-color-primary);
+}
+
+.formulario{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 220px;
+  border: solid black 1px;
+  margin-top: 10px;
+  align-self: center;
+  position: relative;
+  //left: 10%;
+  background-color: rgb(122, 182, 163);
+}
+
+.nombre_servicio{
+  border:solid rgb(112, 51, 204) 1px;
+  border-radius: 30px;
+}
+
+.eliminar_evento{
+  margin-top: 10px;
+  width: 80%;
+  max-width: 350px;
+  height: 60px;
+  background-color: rgb(122, 182, 163);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black 1px;
+}
+
+.evento{
+  height: 100%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(5px, 3.3vw, 15px);
+  //background-color: cadetblue;
+}
+
+
+.icono{
+  height: 100%;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trash-icon{
+  width: 30px;
+  height: 30px;
+}
+
+.icono_mas{
+  margin-top: 10px;
+  width: 60%;
+  height: 60%;
+  color: black;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icono_menos{
+  margin-top: 10px;
+  width: 70%;
+  height: 70%;
+  color: rgb(122, 182, 163);
+  opacity: 0.8;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
