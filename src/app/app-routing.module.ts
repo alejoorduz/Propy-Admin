@@ -11,6 +11,26 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'adding-proyect',
+    loadChildren: () => import('./administraciones/adding-proyect/adding-proyect.module').then( m => m.AddingProyectPageModule)
+  },
+  {
+    path: 'editing-proyect',
+    loadChildren: () => import('./administraciones/editing-proyect/editing-proyect.module').then( m => m.EditingProyectPageModule)
+  },
+  {
+    path: 'proyectos',
+    loadChildren: () => import('./administraciones/proyectos/proyectos.module').then( m => m.ProyectosPageModule)
+  },
+  {
+    path: 'botonera',
+    loadChildren: () => import('./aircall/botonera/botonera.module').then( m => m.BotoneraPageModule)
+  },
+  {
+    path: 'scan',
+    loadChildren: () => import('./aircall/scan/scan.module').then( m => m.ScanPageModule)
+  },
 ];
 
 @NgModule({
