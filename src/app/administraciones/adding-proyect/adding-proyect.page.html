@@ -159,27 +159,28 @@
  <div class="formulario__services">
   <div class="formulario__services">
     <label>
-      <strong>¿Que servicios quieres incluir?</strong>
+      <strong>¿Que Plan quieres agregar?</strong>
     </label>
     <div class="service_selector">
         <div class="service">
-          <h1 class="letra">Reservas</h1>
-          <ion-checkbox color="primary" id="reservas"></ion-checkbox>
+          <h1 class="letra" (click)="presentBasic()">Plan Básico</h1>
+          <ion-checkbox color="primary" id="basico" (click)="checkbasic()"></ion-checkbox>
         </div>
         <!-- <div class="service">
           <h1 class="letra">Pagos</h1>
           <ion-checkbox color="primary" id="pagos"></ion-checkbox>
         </div> -->
         <div class="service">
-          <h1 class="letra">Comunicados</h1>
-          <ion-checkbox color="primary" id="comunicados"></ion-checkbox>
+          <h1 class="letra" (click)="presentStandart()">Plan Estandar</h1>
+          <ion-checkbox color="primary" id="estandar" (click)="checkstandart()"></ion-checkbox>
         </div>
         <div class="service">
-          <div class="service_aircall">
-            <div class="letra_aircall" style="font-size: 10px;">Proyecto con Ascensor</div>
-            <div class="letra_aircall">AirCall</div>
+          <div class="letra">
+          <!-- <div class="service_aircall"> -->
+            <!-- <div class="letra_aircall" style="font-size: 10px;">Proyecto con Ascensor</div> -->
+            <div class="letra_aircall" (click)="presentPro()">Plan PRO</div>
           </div>
-          <ion-checkbox color="primary" id="aircall"></ion-checkbox>
+          <ion-checkbox color="primary" id="pro" (click)="checkpro()"></ion-checkbox>
         </div>
         <!-- <div class="service">
           <h1 class="letra">Documentos</h1>
