@@ -43,7 +43,8 @@
     width: 90%;
     text-align: center;
     font-size: 20px;
-    background-color: rgba(255, 255, 255, 0.918);
+    color: rgb(91, 5, 148);
+   // background-color: rgba(255, 255, 255, 0.918);
   }
 
   
@@ -165,7 +166,8 @@
     // margin-top: 50px;
      color: black;
      border: solid rgb(91, 5, 148) 1px;
-     border-radius: 10px;
+     border-radius: 20px;
+     --background: white;
    }
    
    
@@ -179,7 +181,8 @@
     // margin-top: 50px;
      color: black;
      border: solid rgb(91, 5, 148) 1px;
-     border-radius: 10px;
+     border-radius: 20px;
+     --background: white;
      }
    
    .general{
@@ -251,7 +254,7 @@
      
    
    ion-content {
-        --background: var(--ion-color-secondary);
+        --background: white;
        //--background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(8,7,42,1) 75%, rgb(8, 10, 63) 100%);
        --ion-safe-area-top: 100px;
        overflow-y: scroll !important;

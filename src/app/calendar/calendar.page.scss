@@ -28,6 +28,7 @@ ion-header{
       display: flex;
       justify-content: center;
       align-items: center;
+      color: black;
   }
   
   .headertittle{
@@ -85,6 +86,7 @@ ion-header{
     max-width: 400px;
     height: 400px;
     background-color: rgba(163, 155, 40, 0.548);
+    color: black;
   }
 
   .calendar_tittle{
@@ -99,6 +101,7 @@ ion-header{
     font-size: clamp(5px, 2.8vw, 10px);;
     background-color: rgb(112, 51, 204);
     border: solid black 2px;
+    color: black;
   }
 
 // .center_container{

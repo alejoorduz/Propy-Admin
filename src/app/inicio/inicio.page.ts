@@ -15,20 +15,20 @@ import { BotoneraPage } from "../aircall/botonera/botonera.page";
 //import { NotificationsComponent } from '../notifications/notifications.component';
 import { PopoverController } from '@ionic/angular';
 import { EmergenciasPage } from "../emergencias/emergencias.page";
-// import { DocumentosPage } from "../documentos/documentos.page";
-// import { MascotasPage } from "../mascotas/mascotas.page";
-// import { TrasteosPage } from "../trasteos/trasteos.page";
-// import { ClasificadosPage } from "../clasificados/clasificados.page";
-// import { DirectorioPage } from "../directorio/directorio.page";
-// import { FinanzasPage } from "../finanzas/finanzas.page";
-// import { EncuestasPage } from "../encuestas/encuestas.page";
-// import { BeneficiosPage } from "../beneficios/beneficios.page";
-// import { AutorizacionesPage } from "../autorizaciones/autorizaciones.page";
-// import { SeguridadPage } from "../seguridad/seguridad.page";
-// import { PreguntasPage } from "../preguntas/preguntas.page";
-// import { AccesoPage } from "../acceso/acceso.page";
-// import { EventosPage } from "../eventos/eventos.page";
-// import { CitofoniaPage } from "../citofonia/citofonia.page";
+import { DocumentosPage } from "../documentos/documentos.page";
+import { MascotasPage } from "../mascotas/mascotas.page";
+import { TrasteosPage } from "../trasteos/trasteos.page";
+import { ClasificadosPage } from "../clasificados/clasificados.page";
+import { DirectorioPage } from "../directorio/directorio.page";
+import { FinanzasPage } from "../finanzas/finanzas.page";
+import { EncuestasPage } from "../encuestas/encuestas.page";
+import { BeneficiosPage } from "../beneficios/beneficios.page";
+import { AutorizacionesPage } from "../autorizaciones/autorizaciones.page";
+import { SeguridadPage } from "../seguridad/seguridad.page";
+import { PreguntasPage } from "../preguntas/preguntas.page";
+import { AccesoPage } from "../acceso/acceso.page";
+import { EventosPage } from "../eventos/eventos.page";
+import { CitofoniaPage } from "../citofonia/citofonia.page";
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -279,75 +279,75 @@ name: any
      // console.log("comunicados if")
       this.modal_comunicados();
     }
-    // if (servicio == "Documentos") {
-    //   console.log("Documentos");
-    //   this.modal_documentos();
-    // }
+    if (servicio == "Documentos") {
+      console.log("Documentos");
+      this.modal_documentos();
+    }
     if (servicio == "AirCall") {
       this.modal_aircall();
     }
     if (servicio == "Usuarios") {
       this.modal_usuarios();
     }
-    // if (servicio == "Ingreso Mascotas") {
-    //   console.log("Mascotas");
-    //   this.modal_mascotas();
-    // }
-    // if (servicio == "Avisos de trasteo") {
-    //   console.log("Aviso trasteo");
-    //   this.modal_trasteos();
-    // }
+    if (servicio == "Ingreso Mascotas") {
+      console.log("Mascotas");
+      this.modal_mascotas();
+    }
+    if (servicio == "Avisos de trasteo") {
+      console.log("Aviso trasteo");
+      this.modal_trasteos();
+    }
     if (servicio == "Monitoreo") {
       console.log("Monitoreo");
       this.modal_monitoreo();
     }
-    // if (servicio == "Clasificados") {
-    //   console.log("Clasificados");
-    //   this.modal_clasificados();
-    // }
-    // if (servicio == "Directorio") {
-    //   console.log("Directorio");
-    //   this.modal_directorio();
-    // }
-    // if (servicio == "Finanzas") {
-    //   console.log("Finanzas");
-    //   this.modal_finanzas();
-    // }
-    // if (servicio == "Encuestas") {
-    //   console.log("Encuestas");
-    //   this.modal_encuestas();
-    // }
-    // if (servicio == "Beneficios") {
-    //   console.log("Beneficios");
-    //   this.modal_beneficios();
-    // }
-    // if (servicio == "Autorizaciones") {
-    //   console.log("Autorizar");
-    //   this.modal_autorizaciones();
-    // }
-    // if (servicio == "Seguridad") {
-    //   console.log("Seguridad");
-    //   this.modal_seguridad();
-    // }
-    // if (servicio == "Preguntas y Respuestas") {
-    //   console.log("QA");
-    //   this.modal_preguntas();
-    // }
+    if (servicio == "Clasificados") {
+      console.log("Clasificados");
+      this.modal_clasificados();
+    }
+    if (servicio == "Directorio") {
+      console.log("Directorio");
+      this.modal_directorio();
+    }
+    if (servicio == "Finanzas") {
+      console.log("Finanzas");
+      this.modal_finanzas();
+    }
+    if (servicio == "Encuestas") {
+      console.log("Encuestas");
+      this.modal_encuestas();
+    }
+    if (servicio == "Beneficios") {
+      console.log("Beneficios");
+      this.modal_beneficios();
+    }
+    if (servicio == "Autorizaciones") {
+      console.log("Autorizar");
+      this.modal_autorizaciones();
+    }
+    if (servicio == "Seguridad") {
+      console.log("Seguridad");
+      this.modal_seguridad();
+    }
+    if (servicio == "Preguntas y Respuestas") {
+      console.log("QA");
+      this.modal_preguntas();
+    }
     if (servicio == "Emergencias 24/7") {
       this.modal_emergencias();
     }
-    // if (servicio == "Acceso") {
-    //   console.log("Acceso");
-    //   this.modal_acceso();
-    // }
-    // if (servicio == "Eventos") {
-    //   console.log("Eventos");
-    //   this.modal_eventos();
-    // }
-    // if (servicio == "Citofonia") {
-    //   console.log("Citofonia");
-    //   this.modal_citofonia();
-    // }
+    if (servicio == "Acceso") {
+      console.log("Acceso");
+      this.modal_acceso();
+    }
+    if (servicio == "Eventos") {
+      console.log("Eventos");
+      this.modal_eventos();
+    }
+    if (servicio == "Citofonia") {
+      console.log("Citofonia");
+      this.modal_citofonia();
+    }
   }
 
   // async getuseruid(){
@@ -544,355 +544,355 @@ name: any
     return await modal.present();
   }
 
-  // async modal_documentos(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: DocumentosPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_documentos(){
+    const modal = await this.modalCtrl.create({
+      component: DocumentosPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_mascotas(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: MascotasPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_mascotas(){
+    const modal = await this.modalCtrl.create({
+      component: MascotasPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_trasteos(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: TrasteosPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_trasteos(){
+    const modal = await this.modalCtrl.create({
+      component: TrasteosPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_clasificados(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: ClasificadosPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_clasificados(){
+    const modal = await this.modalCtrl.create({
+      component: ClasificadosPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_directorio(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: DirectorioPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_directorio(){
+    const modal = await this.modalCtrl.create({
+      component: DirectorioPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_finanzas(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: FinanzasPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_finanzas(){
+    const modal = await this.modalCtrl.create({
+      component: FinanzasPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_encuestas(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: EncuestasPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_encuestas(){
+    const modal = await this.modalCtrl.create({
+      component: EncuestasPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_beneficios(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: BeneficiosPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_beneficios(){
+    const modal = await this.modalCtrl.create({
+      component: BeneficiosPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_autorizaciones(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: AutorizacionesPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_autorizaciones(){
+    const modal = await this.modalCtrl.create({
+      component: AutorizacionesPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_seguridad(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: SeguridadPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_seguridad(){
+    const modal = await this.modalCtrl.create({
+      component: SeguridadPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_preguntas(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: PreguntasPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_preguntas(){
+    const modal = await this.modalCtrl.create({
+      component: PreguntasPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_acceso(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: AccesoPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_acceso(){
+    const modal = await this.modalCtrl.create({
+      component: AccesoPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_eventos(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: EventosPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_eventos(){
+    const modal = await this.modalCtrl.create({
+      component: EventosPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
-  // async modal_citofonia(){
-  //   const modal = await this.modalCtrl.create({
-  //     component: CitofoniaPage,
-  //     cssClass: 'adding_modal',
-  //     componentProps: {
-  //       uid: this.uid,
-  //       nombre: this.nombre,
-  //       proyecto: this.proyecto,
-  //       //reserva: this.reserva
-  //     }
-  //   });
-  //   modal.onDidDismiss()
-  //   .then((data) => {
-  //     console.log("esta es la data que devuelve el modal")
-  //     console.log(data)
-  //     var closing = data['data'];
-  //     if (closing) {
-  //       this.modalCtrl.dismiss()
-  //     }else{
-  //       console.log("no me cierro")
-  //     } 
-  // });
-  //   return await modal.present();
-  // }
+  async modal_citofonia(){
+    const modal = await this.modalCtrl.create({
+      component: CitofoniaPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
   dismiss(){
     this.modalCtrl.dismiss();
