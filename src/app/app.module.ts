@@ -22,10 +22,12 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { BLE } from "@ionic-native/ble/ngx";
 
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, NgCalendarModule, IonicModule.forRoot(),IonicStorageModule.forRoot(), AppRoutingModule,
+  imports: [AngularFireStorageModule,BrowserModule, NgCalendarModule, IonicModule.forRoot(),IonicStorageModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule],
   providers: [BLE,CallNumber,Geolocation,LocalNotifications,Storage,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

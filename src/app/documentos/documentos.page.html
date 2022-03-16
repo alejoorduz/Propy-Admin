@@ -15,9 +15,47 @@
   </div>
 
 <div class="todo">
-    <div class="ver_comunicados">
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Agregar Documentos</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form class="ion-padding" (submit)="addTodo()">
+        <ion-item>
+          <ion-label position="stacked">Nombre del Documento</ion-label>
+          <ion-input name="todo" [(ngModel)]="newTodo" placeholder="todo"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <input type="file" name="inputFile" (change)="chooseFile(
+            $event)" required>
+        </ion-item>
+    
+        <ion-button type="submit">Agregar</ion-button>
+      </form>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items | async">
+      <ion-thumbnail slot="start" *ngIf="item.imageUrl">
+        <img [src]="item.imageUrl" alt="">
+      </ion-thumbnail>
+      <ion-label>{{ item.title }}</ion-label>
+      <ion-button slot="end" fill="clear" color="danger" (click)="remove(item)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+   <!-- <div class="ver_comunicados">
             <h1 class="texto"><strong>{{this.proyecto}}</strong></h1>
-            <!-- <h1 class="texto"></h1> -->
+             <h1 class="texto"></h1> 
+            <input type="file" (click)="store_image()" accept=".png,.jpg" multiple="true"/>
             <ion-grid class="grid">
               <ion-col class="col">
                 <ion-row class="row" *ngFor="let comunicado of comunicados">
@@ -29,7 +67,7 @@
                       <div class="top">
                         <div class="titulo">  
                           <strong>{{ comunicado.titulo }}</strong>  
-                        </div>
+                        </div>-->
                         <!-- <div class="dia_hora">  
                           <div class="dia">
                               {{ comunicado.subtitulo }}  
@@ -37,20 +75,20 @@
                           <div class="hora">
                             {{ comunicado.fecha }} 
                           </div>
-                        </div> -->
+                        </div> 
                     </div>
                       <div class="tema">
                          {{comunicado.subtitulo}} 
-                      </div>
+                      </div>-->
                       <!-- <div class="reporte">
                         {{comunicado.data.icono}} 
-                    </div> -->
+                    </div> 
                     </div>
-                      <div class="descarga"><ion-icon class="trash-icon" (click)="delete(comunicado.id)" name="download-outline"></ion-icon></div>
+                      <div class="descarga"><ion-icon class="trash-icon" (click)="store_image()" name="download-outline"></ion-icon></div>
                   </div>
                 </ion-row>
               </ion-col>
             </ion-grid>
-    </div> 
+    </div> -->
 </div>
 </ion-content>

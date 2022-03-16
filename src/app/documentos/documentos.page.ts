@@ -1,8 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import * as $ from "jquery";
+import { Observable } from 'rxjs';
 import { AlertController,ModalController } from '@ionic/angular';
 import { InfoPage } from "../info/info.page";
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { resolve } from 'dns';
+import { rejects } from 'assert';
+import { LoadingController } from '@ionic/angular';
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
+
 
 @Component({
   selector: 'app-documentos',
@@ -11,10 +18,27 @@ import { InfoPage } from "../info/info.page";
 })
 export class DocumentosPage implements OnInit {
 
-  constructor(private fbs: FirestoreService,private modalCtrl: ModalController ,public alertController: AlertController) { }
+  constructor(private db: AngularFirestore,
+    private storage: AngularFireStorage, 
+    private loadingController: LoadingController,
+    private modalCtrl: ModalController ,
+    public alertController: AlertController) {
+      this.itemsRef = db.collection('items')
+    this.items = this.itemsRef.valueChanges();
+     }
+  
   @Input() uid
   @Input() nombre
   @Input() proyecto
+
+  location = 'uploads/';
+  items: Observable<any[]>;
+
+  newTodo: string = '';
+  itemsRef: AngularFirestoreCollection;
+
+  selectedFile: any;
+  loading: HTMLIonLoadingElement;
  
   comunicados  = [
     {"titulo":"Lineamientos COVID",
@@ -41,8 +65,74 @@ export class DocumentosPage implements OnInit {
     "subtitulo":"Información",
     "icon":"document-attach-outline",
     "fecha":"18/08/2021"},
-
   ]
+
+chooseFile (event) {
+  this.selectedFile = event.target.files
+}
+
+addTodo(){
+  this.itemsRef.add({
+    title: this.newTodo
+  })
+  .then(async resp => {
+
+    const imageUrl = await this.uploadFile(resp.id, this.selectedFile)
+
+    this.itemsRef.doc(resp.id).update({
+      id: resp.id,
+      imageUrl: imageUrl || null
+    })
+  }).catch(error => {
+    console.log(error);
+  })
+}
+
+async uploadFile(id, file): Promise<any> {
+  if(file && file.length) {
+    try {
+      await this.presentLoading();
+      const task = await this.storage.ref('images').child(id).put(file[0])
+      this.loading.dismiss();
+      return this.storage.ref(`images/${id}`).getDownloadURL().toPromise();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+async presentLoading() {
+  this.loading = await this.loadingController.create({
+    message: 'Please wait...'
+  });
+  return this.loading.present();
+}
+
+
+
+remove(item){
+  console.log(item);
+  if(item.imageUrl) {
+    this.storage.ref(`images/${item.id}`).delete()
+  }
+  this.itemsRef.doc(item.id).delete()
+}
+
+ async store_image(imageData: any){
+    try{
+      const imageName = "imagen.jpg";
+      return new Promise((resolve,rejects)=>{
+        const pictureRef = this.storage.ref(this.location+imageName);
+        pictureRef.put(imageData).then(function(){
+            pictureRef.getDownloadURL().subscribe((url:any)=>{
+              resolve(url);
+            })
+        })
+      });
+    }catch(e){
+      console.log('error',e)
+    }
+  }
 
   ngOnInit() {
     console.log("aja: ", this.uid,this.nombre,this.proyecto)

@@ -15,73 +15,142 @@ export class DirectorioPage implements OnInit {
   @Input() uid
   @Input() nombre
   @Input() proyecto
+
+  nombre_numero;
+  numero;
  
+  numeros = [];
   comunicados  = [
-    {"titulo":"Porteria",
-    "subtitulo":"325 251 7895",
+
+    {"titulo":"Linea de Emergencia",
+    "subtitulo":"123",
     "icon":"call-outline"},
-  
-    {"titulo":"Administración",
-    "subtitulo":"321 458 9874",
+
+    {"titulo":"Policia Nacional",
+    "subtitulo":"112",
     "icon":"call-outline"},
-   
+
+    {"titulo":"Policia de Tránsito",
+    "subtitulo":"127",
+    "icon":"call-outline"},
+
+    {"titulo":"Defensa Civil",
+    "subtitulo":"144",
+    "icon":"call-outline"},
+
+    {"titulo":"Bomberos",
+    "subtitulo":"119",
+    "icon":"call-outline"},
+
+    {"titulo":"Cruz Roja",
+    "subtitulo":"132",
+    "icon":"call-outline"},
+
+    {"titulo":"Ambulancias",
+    "subtitulo":"125",
+    "icon":"call-outline"},
+
+    {"titulo":"Gaula",
+    "subtitulo":"165",
+    "icon":"call-outline"},
+
+    {"titulo":"Atención Desastres",
+    "subtitulo":"111",
+    "icon":"call-outline"},
+
+    {"titulo":"Violencia a Mujeres",
+    "subtitulo":"155",
+    "icon":"call-outline"},
+
     {"titulo":"DirecTv",
-    "subtitulo":"321 524 8955",
+    "subtitulo":"6015185656",
     "icon":"call-outline"},
 
     {"titulo":"Vanti",
-    "subtitulo":"321 525 7895",
+    "subtitulo":"6013078121",
     "icon":"call-outline"},
 
     {"titulo":"ETB",
-    "subtitulo":"325 256 9856",
+    "subtitulo":"6013777777",
     "icon":"call-outline"},
-
 
     {"titulo":"Movistar",
-    "subtitulo":"315 785 6984",
-    "icon":"call-outline"},
-
-    {"titulo":"Dominoes Pizza",
-    "subtitulo":"328 785 3226",
+    "subtitulo":"3152333333",
     "icon":"call-outline"},
 
     {"titulo":"TIGO",
-    "subtitulo":"985 125 6587",
+    "subtitulo":"018000422222",
     "icon":"call-outline"},
 
-    {"titulo":"Cruz Verde",
-    "subtitulo":"365 789 4523",
-    "icon":"call-outline"},
-
+    {"titulo":"CLARO",
+    "subtitulo":"6017441818",
+    "icon":"call-outline"}
   ]
 
   ngOnInit() {
     console.log("aja: ", this.uid,this.nombre,this.proyecto)
-   // this.get_comunicados();
+   this.get_comunicados();
   }
 
-//   get_comunicados(){
-//     this.fbs.consultar("/Proyectos/"+this.proyecto+"/comunicados").subscribe((servicios) => {
-//       this.comunicados = [];
-//       servicios.forEach((datosTarea: any) => {
-//         this.comunicados.push({
-//           id: datosTarea.payload.doc.id,
-//           data: datosTarea.payload.doc.data()
-//         });
-//       })
-//       //this.password = this.lista_proyectos.data.key
-//       console.log("traigamos la lista de comunicados")
-//       console.log(this.comunicados)
-//     });
-// }
+  upload_publication(){
+    if ($("#nombre_numero").val() == "" || $("#numero").val() == "") {
+      this.presentAlert("Debes rellenar todos los espacios")
+    } else {
+       var timei = new Date(Date.now());
+   // var ti = moment(timei).format('h:mm:ss a'); 
+   // var dt = moment(timei).format('DD-MM-YYYY'); 
+    let numero = {
+      nombre: this.nombre_numero,
+      numero: this.numero
+    };
+
+    var id = Math.floor(Math.random() * 3213546846468435454) + 1
+    console.log("random",id)
+    var sid = id.toString()
+    this.fbs.insertar("Proyectos/"+this.proyecto+"/directorio/", sid, numero )
+    //this.fbs.insertar("user/"+this.uid+"/proyectos/"+this.proyecto+"/mascotas/", sid, numero )
+    $("#nombre_numero").val("");
+    $("#numero").val("");
+    this.presentAlertdone();
+    }
+  }
+
+  async presentAlert(mensaje) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Error',
+      subHeader: 'Verifica el error',
+      message: mensaje,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  get_comunicados(){
+    this.fbs.consultar("/Proyectos/"+this.proyecto+"/directorio").subscribe((servicios) => {
+      this.numeros = [];
+      servicios.forEach((datosTarea: any) => {
+        this.numeros.push({
+          id: datosTarea.payload.doc.id,
+          data: datosTarea.payload.doc.data()
+        });
+      })
+      //this.password = this.lista_proyectos.data.key
+      console.log("traigamos la lista de comunicados")
+      console.log(this.numeros)
+    });
+}
 
   async presentAlertdone() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Listo!',
-      subHeader: 'Formulario enviado con exito',
-      message: 'Gracias por tus sugerencias.',
+      header: '¡Listo!',
+      subHeader: 'Registro exitoso',
+      message: 'Número guardado',
       buttons: ['OK']
     });
   
@@ -102,7 +171,10 @@ export class DirectorioPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-
-
+  delete(comunicado){
+    //console.log("borrando base de datos de",this.current_user_uid,  " del proyecto ",proyecto)
+    this.fbs.delete_doc("Proyectos/"+this.proyecto+"/directorio", comunicado).then(() => {
+    })
+   }
 }
 

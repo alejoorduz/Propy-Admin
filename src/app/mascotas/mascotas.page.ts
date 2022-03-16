@@ -17,7 +17,7 @@ export class MascotasPage implements OnInit {
   @Input() nombre
   @Input() proyecto
 
-  
+  dueno: string
   nombres: string
   especie: string
   raza: string
@@ -41,34 +41,11 @@ export class MascotasPage implements OnInit {
         });
       })
       //this.password = this.lista_proyectos.data.key
-      console.log("traigamos la lista de comunicados")
-      console.log(this.comunicados)
-    });
+       console.log("traigamos la lista de comunicados")
+       console.log(this.comunicados)
+     });
 }
 
-  upload_publication(){
-    if ($("#nombre").val() == "" || $("#especie").val() == "" || $("#raza").val() == "") {
-      this.presentAlert("Debes rellenar todos los espacios")
-    console.log("rellena todo maldito")
-    } else {
-       var timei = new Date(Date.now());
-    var ti = moment(timei).format('h:mm:ss a'); 
-    var dt = moment(timei).format('DD-MM-YYYY'); 
-    console.log("AHSHAJWSasasJDJA")
-    let comunicado = {
-      nombre: this.nombres,
-      especie: this.especie,
-      raza: this.raza,
-      dia: dt,
-      hora: ti
-    };
-    this.firestoreService.add("Proyectos/"+this.proyecto+"/mascotas", comunicado )
-    $("#nombres").val("")
-    $("#especie").val("")
-    $("#raza").val("")
-    this.presentAlertdone();
-    }
-  }
 
   async presentAlert(mensaje) {
     const alert = await this.alertController.create({
@@ -107,10 +84,6 @@ export class MascotasPage implements OnInit {
   delete(comunicado){
     //console.log("borrando base de datos de",this.current_user_uid,  " del proyecto ",proyecto)
     this.fbs.delete_doc("Proyectos/"+this.proyecto+"/mascotas", comunicado).then(() => {
-      // Actualizar la lista completa
-     // this.consultar_lista_servicios();
-      // Limpiar datos de pantalla
-      //this.tareaEditando = {} as Tarea;
     })
   
     // this.fbs.delete_doc("Admins/"+this.current_user_uid+"/proyectos",proyecto).then(() => {
