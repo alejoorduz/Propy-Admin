@@ -24,7 +24,8 @@ export class DocumentosPage implements OnInit {
     private modalCtrl: ModalController ,
     public alertController: AlertController) {
       this.itemsRef = db.collection('items')
-    this.items = this.itemsRef.valueChanges();
+      this.items = this.itemsRef.valueChanges();
+      console.log("items",this.items)
      }
   
   @Input() uid
@@ -92,9 +93,10 @@ async uploadFile(id, file): Promise<any> {
   if(file && file.length) {
     try {
       await this.presentLoading();
-      const task = await this.storage.ref('images').child(id).put(file[0])
+      const task = await this.storage.ref(this.proyecto+'/documentos').child(id).put(file[0])
       this.loading.dismiss();
-      return this.storage.ref(`images/${id}`).getDownloadURL().toPromise();
+      $('#name').val("");
+      return this.storage.ref(this.proyecto+`/documentos/${id}`).getDownloadURL().toPromise();
     } catch (error) {
       console.log(error);
     }
@@ -169,7 +171,7 @@ remove(item){
     console.log('onDidDismiss resolved with role', role);
   }
 
-  async modal_info(){
+  async modal_info(urly){
     const modal = await this.modalCtrl.create({
       component: InfoPage,
       cssClass: 'info_modal',
@@ -177,7 +179,7 @@ remove(item){
         uid: this.uid,
         nombre: this.nombre,
         proyecto: this.proyecto,
-        url: "../../assets/images/pdf.png"
+        url: urly
         //reserva: this.reserva
       }
     });

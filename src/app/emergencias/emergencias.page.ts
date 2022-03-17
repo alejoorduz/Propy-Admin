@@ -24,4 +24,6 @@ export class EmergenciasPage implements OnInit {
     dismiss(){
       this.modalCtrl.dismiss();
     }
+
+    
 }

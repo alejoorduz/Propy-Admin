@@ -17,35 +17,34 @@
 <div class="todo">
 
 
-  <ion-card>
-    <ion-card-header>
+  <ion-card class="card">
+    <ion-card-header class="card_header">
       <ion-card-subtitle>Agregar Documentos</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content>
-      <form class="ion-padding" (submit)="addTodo()">
-        <ion-item>
-          <ion-label position="stacked">Nombre del Documento</ion-label>
-          <ion-input name="todo" [(ngModel)]="newTodo" placeholder="todo"></ion-input>
+    <ion-card-content class="card_content">
+      <form class="form" (submit)="addTodo()">
+        <ion-item class="card_item">
+          <ion-label class="card_content" position="stacked">Nombre del Documento</ion-label>
+          <ion-input class="card_content" name="todo" id="name" [(ngModel)]="newTodo" placeholder="Ej: Carta bienvenida"></ion-input>
         </ion-item>
-
-        <ion-item lines="none">
-          <input type="file" name="inputFile" (change)="chooseFile(
-            $event)" required>
+        <ion-item class="card_item" lines="none">
+          <input type="file" name="inputFile" (change)="chooseFile($event)" required>
         </ion-item>
-    
+        <div class="card_content">
         <ion-button type="submit">Agregar</ion-button>
+        </div>
       </form>
     </ion-card-content>
 
   </ion-card>
 
   <ion-list>
-    <ion-item *ngFor="let item of items | async">
-      <ion-thumbnail slot="start" *ngIf="item.imageUrl">
+    <ion-item class="doc" *ngFor="let item of items | async">
+      <ion-label>{{ item.title }}</ion-label>
+      <ion-thumbnail (click)="modal_info(item.imageUrl)" class="image" slot="start" *ngIf="item.imageUrl">
         <img [src]="item.imageUrl" alt="">
       </ion-thumbnail>
-      <ion-label>{{ item.title }}</ion-label>
       <ion-button slot="end" fill="clear" color="danger" (click)="remove(item)">
         <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-button>

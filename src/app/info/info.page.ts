@@ -53,7 +53,7 @@ export class InfoPage implements OnInit {
   ]
 
   ngOnInit() {
-    console.log("aja: ",this.modaly)
+    console.log("url: ",this.url)
    // this.get_comunicados();
    if (this.modaly === "clasificados") {
      this.show = true;
