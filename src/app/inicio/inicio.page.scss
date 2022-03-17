@@ -331,11 +331,13 @@ ion-content{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: black;
 }
 
 .parrafo__texto{
   text-align: center;
   font-size: clamp(5px, 4vw, 20px);
+  color: black;
 }
 
   .service_icon{
@@ -381,10 +383,12 @@ ion-content{
 
   ion-card-header{
     height: 30%;
+    color: black;
   }
 
   ion-card-title{
     font-size: 15px;
+    color: black;
   } 
 
   ion-card-content{
@@ -394,7 +398,9 @@ ion-content{
     justify-content: start;
     align-items: center;
     flex-direction: column;
+    color: black;
   }
+
 
   .icon{
     //margin-top: 20px;
@@ -410,6 +416,7 @@ ion-content{
     justify-content: center;
     align-items: center;
     width: 100%;
+    color: black;
   }
 
   .imagen{

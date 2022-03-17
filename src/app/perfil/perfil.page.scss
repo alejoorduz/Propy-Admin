@@ -25,6 +25,7 @@ ion-header{
       display: flex;
       justify-content: center;
       align-items: center;
+      color:black;
   }
   
   .headertittle{
@@ -79,6 +80,7 @@ ion-header{
       display: flex;
       //background-color: blue;
       justify-content: center;
+      color:black;
     }
 
  .divform{
@@ -89,6 +91,7 @@ ion-header{
       justify-content: center;
       flex-direction: column;
       align-items: center;
+      color:black;
       //background-color: yellow;
   }
   
@@ -103,6 +106,7 @@ ion-header{
       //position: relative;
       //left: 10%;
       border-radius: 20px;
+      color:black;
   }
   
   .label{
@@ -114,6 +118,7 @@ ion-header{
     align-items: center;
     border-radius: 30px;
     border:solid rgb(112, 51, 204) 1px;
+    color:black;
   }
 
   
@@ -151,6 +156,7 @@ ion-header{
      // position: relative;
     //  left: 5%;
       width: 90%;
+      color:black;
   } 
 
   .icono{
