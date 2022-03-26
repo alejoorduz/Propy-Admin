@@ -17,10 +17,12 @@ export class TrasteosPage implements OnInit {
   @Input() nombre
   @Input() proyecto
 
-  
-  apto: number = 508;
-  fecha: string
-  myDate: Date;
+  dueno: string
+  nombres: string
+  especie: string
+  raza: string
+  foto: string
+  vacuna: string
 
   comunicados = [];
 
@@ -39,27 +41,11 @@ export class TrasteosPage implements OnInit {
         });
       })
       //this.password = this.lista_proyectos.data.key
-      console.log("traigamos la lista de comunicados")
-      console.log(this.comunicados)
-    });
+       console.log("traigamos la lista de comunicados")
+       console.log(this.comunicados)
+     });
 }
 
-  upload_publication(){
-    console.log(this.myDate)
-    var ti = moment(this.myDate).format('h:mm:ss a'); 
-     var dt = moment(this.myDate).format('DD-MM-YYYY');
-    let mudanza = {
-        nombre: this.nombre,
-        apto: this.apto,
-        fecha: dt,
-        hora: ti
-        // dia: dt,
-        // hora: ti
-      };
-
-     this.firestoreService.add("Proyectos/"+this.proyecto+"/mudanzas", mudanza );
-     this.presentAlertdone();
-  }
 
   async presentAlert(mensaje) {
     const alert = await this.alertController.create({
@@ -80,8 +66,8 @@ export class TrasteosPage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Listo!',
-      subHeader: 'Tu mudanza quedo agendada',
-      message: 'Gracias!',
+      subHeader: 'Tu mascota ha sido guardada',
+      message: 'Gracias.',
       buttons: ['OK']
     });
   
@@ -98,10 +84,6 @@ export class TrasteosPage implements OnInit {
   delete(comunicado){
     //console.log("borrando base de datos de",this.current_user_uid,  " del proyecto ",proyecto)
     this.fbs.delete_doc("Proyectos/"+this.proyecto+"/mudanzas", comunicado).then(() => {
-      // Actualizar la lista completa
-     // this.consultar_lista_servicios();
-      // Limpiar datos de pantalla
-      //this.tareaEditando = {} as Tarea;
     })
   
     // this.fbs.delete_doc("Admins/"+this.current_user_uid+"/proyectos",proyecto).then(() => {

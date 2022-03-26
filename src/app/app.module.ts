@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-//import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -23,14 +23,42 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 import { BLE } from "@ionic-native/ble/ngx";
 
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { DocumentViewer, DocumentViewerOptions } from '@awesome-cordova-plugins/document-viewer/ngx';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+//import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
+//import { File } from '@awesome-cordova-plugins/file';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [AngularFireStorageModule,BrowserModule, NgCalendarModule, IonicModule.forRoot(),IonicStorageModule.forRoot(), AppRoutingModule,
+  imports: [
+   // File,
+   // FileOpener,
+    PdfViewerModule,
+    AngularFireStorageModule,
+    BrowserModule,
+     NgCalendarModule,
+      IonicModule.forRoot(),
+      IonicStorageModule.forRoot(), 
+      AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule],
-  providers: [BLE,CallNumber,Geolocation,LocalNotifications,Storage,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    File,
+    FileOpener,
+    FileTransfer,
+    DocumentViewer,
+    BLE,CallNumber,
+    Geolocation,
+    LocalNotifications,
+    InAppBrowser,
+    Storage,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

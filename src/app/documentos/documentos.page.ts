@@ -9,23 +9,32 @@ import { resolve } from 'dns';
 import { rejects } from 'assert';
 import { LoadingController } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
+import { Platform } from '@ionic/angular';
 
 
 @Component({
   selector: 'app-documentos',
   templateUrl: './documentos.page.html',
   styleUrls: ['./documentos.page.scss'],
+  providers: [File,DocumentViewer]
 })
 export class DocumentosPage implements OnInit {
 
-  constructor(private db: AngularFirestore,
+  constructor(private platform: Platform,
+    private file: File, 
+    private ft: FileTransfer,
+    private fileOpener: FileOpener, 
+    private document: DocumentViewer,
+    private db: AngularFirestore,
     private storage: AngularFireStorage, 
     private loadingController: LoadingController,
     private modalCtrl: ModalController ,
     public alertController: AlertController) {
-      this.itemsRef = db.collection('items')
-      this.items = this.itemsRef.valueChanges();
-      console.log("items",this.items)
+
      }
   
   @Input() uid
@@ -103,6 +112,20 @@ async uploadFile(id, file): Promise<any> {
   }
 }
 
+downloadAndOpenPdf(urly) {
+  let downloadUrl = urly;
+ let path = this.file.dataDirectory;
+ const transfer = this.ft.create();      
+ transfer.download (downloadUrl, `${path}myfile.pdf`).then(entry => {
+    let url = entry.toURL();
+    if (this.platform.is('ios')) {
+     this.document.viewDocument(url, 'application/pdf', {});
+     } else {
+      this.fileOpener.open(url, 'application/pdf');
+    }
+  });
+}
+
 async presentLoading() {
   this.loading = await this.loadingController.create({
     message: 'Please wait...'
@@ -137,7 +160,10 @@ remove(item){
   }
 
   ngOnInit() {
-    console.log("aja: ", this.uid,this.nombre,this.proyecto)
+    console.log("aja: ", this.uid,this.nombre,this.proyecto);
+    this.itemsRef = this.db.collection('Proyectos/'+this.proyecto+'/documentos')
+    this.items = this.itemsRef.valueChanges();
+    console.log("items",this.items)
    // this.get_comunicados();
   }
 

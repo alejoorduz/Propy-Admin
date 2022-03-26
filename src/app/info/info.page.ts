@@ -2,15 +2,42 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import * as $ from "jquery";
 import { AlertController,ModalController } from '@ionic/angular';
+//import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+//import { DocumentViewer, DocumentViewerOptions } from '@awesome-cordova-plugins/document-viewer/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
+import { Platform } from '@ionic/angular';
+//import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+@Pipe({
+  name: 'safe'
+})
 
 @Component({
   selector: 'app-info',
   templateUrl: './info.page.html',
   styleUrls: ['./info.page.scss'],
+  providers: [File,DocumentViewer]
+
 })
 export class InfoPage implements OnInit {
 
-  constructor(private fbs: FirestoreService,private modalCtrl: ModalController ,public alertController: AlertController) { }
+  constructor(
+    private sanitizer: DomSanitizer,
+    private platform: Platform,
+    private file: File, 
+    private ft: FileTransfer,
+    private fileOpener: FileOpener, 
+    private document: DocumentViewer,
+    private fbs: FirestoreService,
+   // private iab: InAppBrowser,
+    private modalCtrl: ModalController ,
+    public alertController: AlertController) { }
+    
   @Input() uid
   @Input() nombre
   @Input() proyecto
@@ -52,8 +79,15 @@ export class InfoPage implements OnInit {
 
   ]
 
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+
   ngOnInit() {
     console.log("url: ",this.url)
+    // const browser = this.iab.create(this.url,'_self',{location:'no'});
+  // this.document.viewDocument('assets/MyPdf.pdf', 'application/pdf', this.options)
    // this.get_comunicados();
    if (this.modaly === "clasificados") {
      this.show = true;
@@ -76,6 +110,37 @@ export class InfoPage implements OnInit {
 //       console.log(this.comunicados)
 //     });
 // }
+
+openLocalPdf() {
+ let filePath = this.file.applicationDirectory + 'www/assets';
+  if (this.platform.is('android')) {
+    $("#bot").css("background-color","red")
+    let fakeName = Date.now();
+    this.file.copyFile(filePath, 'MyPdf.pdf', this.file.dataDirectory, `${fakeName}.pdf`).then(result => {
+     this.fileOpener.open ( result.nativeURL, 'application/pdf');
+    });
+   } else {
+    $("#bot").css("background-color","blue")
+    const options: DocumentViewerOptions = {
+      title: 'My PDF'
+    }
+   this.document.viewDocument (`${filePath}/MyPdf.pdf`, 'application/pdf', options);
+}
+}
+
+downloadAndOpenPdf() {
+  let downloadUrl = this.url;
+ let path = this.file.dataDirectory;
+ const transfer = this.ft.create();      
+ transfer.download (downloadUrl, `${path}myfile.pdf`).then(entry => {
+    let url = entry.toURL();
+    if (this.platform.is('ios')) {
+     this.document.viewDocument(url, 'application/pdf', {});
+     } else {
+      this.fileOpener.open(url, 'application/pdf');
+    }
+  });
+}
 
   async presentAlertdone() {
     const alert = await this.alertController.create({

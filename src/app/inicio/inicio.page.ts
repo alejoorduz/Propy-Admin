@@ -157,40 +157,40 @@ name: any
     icon:"clipboard-outline",
     "habilitado":true},
 
-    {"nombre":"Acceso",
-    "descripcion":"Utiliza el celular para ingresar a las torres",
-    icon:"id-card-outline",
-    "habilitado":true},
-
-    {"nombre": "Pagos",
-    "descripcion":"Accede al link de pago",
-    icon:"cash-outline",
-    "habilitado":true},
-
-    {"nombre":"Monitoreo",
-    "descripcion":"Monitorea en tiempo real datos obtenidos",
-    icon:"eye-outline",
-    "habilitado":true},
-
-    {"nombre":"Finanzas",
-    "descripcion":"Revisa los archivos de presupuestos",
-    icon:"bar-chart-outline",
-    "habilitado":true},
-    
     {"nombre":"Beneficios",
     "descripcion":"Accede a beneficios",
     icon:"diamond-outline",
     "habilitado":true},
 
-    {"nombre":"Seguridad",
-    "descripcion":"Revisa los temas de seguridad",
-    icon:"shield-half-outline",
-    "habilitado":true},
+    // {"nombre":"Acceso",
+    // "descripcion":"Utiliza el celular para ingresar a las torres",
+    // icon:"id-card-outline",
+    // "habilitado":true},
 
-    {"nombre":"Citofonia",
-    "descripcion":"Controla la entrada de visitantes",
-    icon:"volume-high-outline",
-    "habilitado":true}
+    // {"nombre": "Pagos",
+    // "descripcion":"Accede al link de pago",
+    // icon:"cash-outline",
+    // "habilitado":true},
+
+    // {"nombre":"Monitoreo",
+    // "descripcion":"Monitorea en tiempo real datos obtenidos",
+    // icon:"eye-outline",
+    // "habilitado":true},
+
+    // {"nombre":"Finanzas",
+    // "descripcion":"Revisa los archivos de presupuestos",
+    // icon:"bar-chart-outline",
+    // "habilitado":true},
+    
+    // {"nombre":"Seguridad",
+    // "descripcion":"Revisa los temas de seguridad",
+    // icon:"shield-half-outline",
+    // "habilitado":true},
+
+    // {"nombre":"Citofonia",
+    // "descripcion":"Controla la entrada de visitantes",
+    // icon:"volume-high-outline",
+    // "habilitado":true}
  ]
 
   ngOnInit() {
@@ -244,15 +244,14 @@ name: any
         this.servicios[11].habilitado = this.proyect_services.data.documentos;
         this.servicios[12].habilitado = this.proyect_services.data.clasificados;
         this.servicios[13].habilitado = this.proyect_services.data.encuestas;
-        this.servicios[14].habilitado = this.proyect_services.data.acceso;
-        this.servicios[15].habilitado = this.proyect_services.data.pagos;
-        this.servicios[16].habilitado = this.proyect_services.data.monitoreo;
-        this.servicios[17].habilitado = this.proyect_services.data.finanzas;
-        this.servicios[18].habilitado = this.proyect_services.data.beneficios;
-        this.servicios[19].habilitado = this.proyect_services.data.seguridad;
-        this.servicios[20].habilitado = this.proyect_services.data.citofonia;
-        // this.servicios[20].habilitado = this.proyect_services.data.autorizaciones;
-        // this.servicios[21].habilitado = this.proyect_services.data.autorizaciones;
+        this.servicios[14].habilitado = this.proyect_services.data.beneficios;
+        // this.servicios[15].habilitado = this.proyect_services.data.acceso;
+        // this.servicios[16].habilitado = this.proyect_services.data.pagos;
+        // this.servicios[17].habilitado = this.proyect_services.data.monitoreo;
+        // this.servicios[18].habilitado = this.proyect_services.data.finanzas;
+        // this.servicios[19].habilitado = this.proyect_services.data.seguridad;
+        // this.servicios[20].habilitado = this.proyect_services.data.citofonia;
+
         console.log("auth: ", this.servicios[13])
         console.log("auth: ", this.proyect_services.data)
         //this.emergencia = true;

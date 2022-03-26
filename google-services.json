@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "11538880600",
+    "project_id": "appmin-df75c",
+    "storage_bucket": "appmin-df75c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11538880600:android:38ee96b83e01870435122d",
+        "android_client_info": {
+          "package_name": "io.appmin.administrador"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11538880600-r1d7mt4n0np1ksfd8qe1u39dburlbf7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyhElR6sJHpTL4ytXPJALolyHyb20Dxlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11538880600-r1d7mt4n0np1ksfd8qe1u39dburlbf7s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

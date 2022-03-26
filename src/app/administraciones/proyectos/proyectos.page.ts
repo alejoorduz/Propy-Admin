@@ -14,6 +14,7 @@ import { Router, NavigationExtras } from "@angular/router";
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { PerfilPage } from "../../perfil/perfil.page";
 import * as $ from "jquery";
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-proyectos',
@@ -57,12 +58,14 @@ export class ProyectosPage implements OnInit {
   current_user_rol;
   current_user_activate;
   
-  constructor(public  router: Router,private geolocation: Geolocation,private modalCtrl: ModalController,private storage: Storage,private fbs: FirestoreService ,private authSvc: AuthService,public afAuth:AngularFireAuth, private afs: AngularFirestore) { }
+  constructor(private loadingController: LoadingController,public router: Router,private geolocation: Geolocation,private modalCtrl: ModalController,private storage: Storage,private fbs: FirestoreService ,private authSvc: AuthService,public afAuth:AngularFireAuth, private afs: AngularFirestore) { }
 
   proyecto:string;
 
   lat;
   long;
+
+  loading: HTMLIonLoadingElement;
 
   WeatherData:any = {
     main : {},
@@ -165,7 +168,7 @@ export class ProyectosPage implements OnInit {
   });
   }
 
-consultar_lista_servicios(){
+async consultar_lista_servicios(){
   if (this.current_user_activate === false) {
     console.log("non activated false: ", this.current_user_activate)
     this.activate_account = false; 
@@ -173,7 +176,7 @@ consultar_lista_servicios(){
   } else {
     console.log("activated")
     this.activate_account = true; 
-     console.log()
+    await this.presentLoading();
     this.fbs.consultar("Admins/"+this.current_user_uid+"/proyectos").subscribe((servicios) => {
       this.lista_servicio = [];
       servicios.forEach((datosTarea: any) => {
@@ -182,6 +185,7 @@ consultar_lista_servicios(){
           data: datosTarea.payload.doc.data()
         });
       })
+      this.loading.dismiss();
       console.log("lista de servicios: " , this.lista_servicio)
        if (this.lista_servicio.length === 0) { 
       console.log("usuario nuevo sin negocio")
@@ -191,10 +195,16 @@ consultar_lista_servicios(){
       console.log("usuario nuevo viejo")
     }
     });
+    
   }
 }
 
-
+async presentLoading() {
+  this.loading = await this.loadingController.create({
+    message: 'Porfavor espere...'
+  });
+  return this.loading.present();
+}
 
   // ionViewDidEnter() {
   //   //PRIMERO SE LEE LA BASE DE DATOS Y SE BUSCA SI YA EXISTEN SERVICIOS Y SE DESPLIEGAN

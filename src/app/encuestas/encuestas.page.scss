@@ -1,6 +1,6 @@
 //HEADER-------------------------------------------------
 ion-header{
-    background-color: var(--ion-color-primary);
+    background-color: White;
     color: black;
     justify-items: center;
     align-items: center;
@@ -91,6 +91,26 @@ ion-header{
     justify-content: center;
     align-items: center;
     text-align: center;
+    //background-color: palevioletred;
+  }
+
+  .textodos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+   // background-color: red;
+  }
+
+  .textotres{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 10px;
+    color: blue;
+  //  background-color: rgb(35, 35, 163);
   }
   
   .ver_comunicados{
@@ -147,7 +167,8 @@ ion-header{
   }
   
   .submit{
-    margin-bottom: 30px;
+     margin-top: 20px;
+     margin-bottom: 30px;
       width: 120px;
       height: 40px; //100vh o 100vw wiewheight o viewwidth
       color: white;
@@ -224,6 +245,7 @@ ion-header{
   
   .card{
       display: flex;
+      max-width: 310px;
       //flex-direction: column;
       width: 98%;
       height: 100px;

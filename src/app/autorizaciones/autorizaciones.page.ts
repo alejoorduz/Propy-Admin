@@ -15,85 +15,46 @@ export class AutorizacionesPage implements OnInit {
   @Input() uid
   @Input() nombre
   @Input() proyecto
+
+  nombre_numero;
+  numero;
  
-  comunicados  = [
-    {"titulo":"Ingreso de personal doméstico",
-    "subtitulo":"Formato de Autorización", 
-    "url":"../../assets/images/auth_pd.png",   
-    "icon":"checkmark-circle-outline",
-    "fecha":"28/02/2022"},
-
-    {"titulo":"Recogida de Mascotas",
-    "subtitulo":"Formato de Autorización",
-    "url":"../../assets/images/auth_mas.png",
-    "icon":"checkmark-circle-outline",
-    "fecha":"15/01/2022"},
-
-    {"titulo":"Autorizaciones Generales",
-    "subtitulo":"Formato de Autorización",
-    "url":"../../assets/images/auth.png",
-    "icon":"checkmark-circle-outline",
-    "fecha":"31/11/2021"},
-
-    {"titulo":"Ingreso contratistas",
-    "subtitulo":"Autorización de ingreso",
-    "url":"../../assets/images/auth_contr.png",
-    "icon":"checkmark-circle-outline",
-    "fecha":"12/10/2021"},
-  ]
+  numeros = [];
 
   ngOnInit() {
     console.log("aja: ", this.uid,this.nombre,this.proyecto)
-   // this.get_comunicados();
+   this.get_comunicados();
   }
 
-//   get_comunicados(){
-//     this.fbs.consultar("/Proyectos/"+this.proyecto+"/comunicados").subscribe((servicios) => {
-//       this.comunicados = [];
-//       servicios.forEach((datosTarea: any) => {
-//         this.comunicados.push({
-//           id: datosTarea.payload.doc.id,
-//           data: datosTarea.payload.doc.data()
-//         });
-//       })
-//       //this.password = this.lista_proyectos.data.key
-//       console.log("traigamos la lista de comunicados")
-//       console.log(this.comunicados)
-//     });
-// }
+  upload_publication(){
+    if ($("#nombre_numero").val() == "" || $("#numero").val() == "") {
+      this.presentAlert("Debes rellenar todos los espacios")
+    } else {
+       var timei = new Date(Date.now());
+   // var ti = moment(timei).format('h:mm:ss a'); 
+   // var dt = moment(timei).format('DD-MM-YYYY'); 
+    let numero = {
+      nombre: this.nombre_numero,
+      numero: this.numero
+    };
 
-async modal_info(url){
-  const modal = await this.modalCtrl.create({
-    component: InfoPage,
-    cssClass: 'info_modal',
-    componentProps: {
-      uid: this.uid,
-      nombre: this.nombre,
-      proyecto: this.proyecto,
-      url: url
-      //reserva: this.reserva
+    var id = Math.floor(Math.random() * 3213546846468435454) + 1
+    console.log("random",id)
+    var sid = id.toString()
+    this.fbs.insertar("Proyectos/"+this.proyecto+"/autorizaciones/", sid, numero )
+    //this.fbs.insertar("user/"+this.uid+"/proyectos/"+this.proyecto+"/mascotas/", sid, numero )
+    $("#nombre_numero").val("");
+    $("#numero").val("");
+    this.presentAlertdone();
     }
-  });
-  modal.onDidDismiss()
-  .then((data) => {
-    console.log("esta es la data que devuelve el modal")
-    console.log(data)
-    var closing = data['data'];
-    if (closing) {
-      this.modalCtrl.dismiss()
-    }else{
-      console.log("no me cierro")
-    } 
-});
-  return await modal.present();
-}
+  }
 
-  async presentAlertdone() {
+  async presentAlert(mensaje) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Listo!',
-      subHeader: 'Formulario enviado con exito',
-      message: 'Gracias por tus sugerencias.',
+      header: 'Error',
+      subHeader: 'Verifica el error',
+      message: mensaje,
       buttons: ['OK']
     });
   
@@ -103,10 +64,82 @@ async modal_info(url){
     console.log('onDidDismiss resolved with role', role);
   }
 
+  get_comunicados(){
+    this.fbs.consultar("/Proyectos/"+this.proyecto+"/autorizaciones").subscribe((servicios) => {
+      this.numeros = [];
+      servicios.forEach((datosTarea: any) => {
+        this.numeros.push({
+          id: datosTarea.payload.doc.id,
+          data: datosTarea.payload.doc.data()
+        });
+      })
+      //this.password = this.lista_proyectos.data.key
+      console.log("traigamos la lista de comunicados")
+      console.log(this.numeros)
+    });
+}
+
+  async presentAlertdone() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: '¡Listo!',
+      subHeader: 'Registro exitoso',
+      message: 'Encuesta guardada',
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  llamar(number){
+    console.log("Entre a la llamada de emergencia")
+    //this.callNumber.callNumber(number, true)
+  //  .then(res => console.log('Launched dialer!', res))
+  //   .catch(err => console.log('Error launching dialer', err));
+    }
+
   dismiss(){
     this.modalCtrl.dismiss();
   }
 
+  //   async GoToURL(url){
+  //    const browser = this.iab.create(url,'_self',{location:'no'});
+  // }
 
+  async modal_info(url){
+    const modal = await this.modalCtrl.create({
+      component: InfoPage,
+      cssClass: 'info_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        url: url,
+        modaly: "encuestas"
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
 
+  delete(comunicado){
+    //console.log("borrando base de datos de",this.current_user_uid,  " del proyecto ",proyecto)
+    this.fbs.delete_doc("Proyectos/"+this.proyecto+"/autorizaciones", comunicado).then(() => {
+    })
+   }
 }
+
