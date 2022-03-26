@@ -1,0 +1,35 @@
+<!-- <ion-header class="header">
+  <ion-toolbar>
+
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="headercontainer">
+    <div class="back">
+      <ion-icon name="arrow-back" class="iconoback" (click)="dismiss()"></ion-icon>
+    </div>
+    <div class="headertittle">
+      <ion-title > </ion-title>
+    </div>
+  </div>
+
+<div class="todo">
+  <!-- <img class="imagen" [src]="url" alt=""> -->
+  <iframe [src]="url | safe" class="iframe" scrolling="yes" ></iframe>
+  <!-- <pdf-viewer src="assets/MyPdf.pdf" style="width: 500px; height: 500px">*ngIf="this.show"
+  </pdf-viewer> -->
+   <!-- <div class="botones" >
+      <button class="boton" (click)="downloadAndOpenPdf()">
+        downloadandopen
+      </button>
+      <button id="bot" class="boton" (click)="openLocalPdf()">
+        open local
+      </button>
+      <button class="boton">
+        Reservar
+    </button>
+    </div> -->
+    </div> 
+</ion-content>
+

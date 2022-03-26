@@ -4,6 +4,7 @@ import * as $ from "jquery";
 import { AlertController,ModalController } from '@ionic/angular';
 import { InfoPage } from "../info/info.page";
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { OpenLinkPage } from '../open-link/open-link.page';
 
 
 @Component({
@@ -179,7 +180,7 @@ export class EncuestasPage implements OnInit {
 
   async modal_info(url){
     const modal = await this.modalCtrl.create({
-      component: InfoPage,
+      component: OpenLinkPage,
       cssClass: 'info_modal',
       componentProps: {
         uid: this.uid,
