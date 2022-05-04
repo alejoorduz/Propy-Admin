@@ -339,6 +339,7 @@ onChange(){
 
 Connected(piso,valor,viajenum){
   this.use_connect = localStorage.getItem("use_connect")
+  console.log("Bandera de modod conexion: ",this.use_connect)
   this.uuidconnect =  localStorage.getItem("uuid");
   $(".buttonpad").css("background-color","#e39774");
   $("#aviso_modo").text("Oprime para ir al piso");
@@ -370,7 +371,7 @@ Connected(piso,valor,viajenum){
 Connect(piso,valor,viajenum){
     localStorage.setItem("use_connect","0");
     //this.setStatus('uuid: ' + this.uuid + typeof(this.uuid));
-   this.setStatus('Comando en cola, esperando...');       
+   this.setStatus('Comando en cola, esperando...');   
   (<any>window).ble.connect(this.uuid, device => {
     this.setStatus('Enviando comando...');
     console.log('Connected', device);
@@ -420,13 +421,12 @@ Disconnect(uuid){
      setTimeout(() => {
      this.setStatus('Bienvenid@');
      }, 1000)
-  
 });
 }
 
-  downpage(){
+downpage(){
     this.pageTop.scrollToBottom(1000);
-  }
+}
 
   comenzar(){
     this.getLocation();

@@ -31,7 +31,7 @@ export class AddingProyectPage implements OnInit {
   domingo: boolean
 
   //Plan elegido por usuario
-  plan: string;
+  plan: string = "";
   //servicios disponibles por la app
   // reservas: boolean
   // pagos: boolean = false
@@ -63,14 +63,16 @@ export class AddingProyectPage implements OnInit {
   }
 
   checkbasic(){
-    console.log("Plan basico")
+    console.log("Plan basico: ")
     console.log($("#basico").prop("checked"))
     if ($("#basico").prop("checked") === false) {
-      $("#estandar").prop("checked",false)
-      $("#pro").prop("checked",false)
+      // $("#estandar").prop("checked",false)
+      // $("#pro").prop("checked",false)
       this.plan = "basico"
+      console.log("plan basico seleccionado!")
     }
   }
+
   checkstandart(){
     console.log("Plan estandar")
     console.log($("#estandar").prop("checked"))
@@ -136,13 +138,17 @@ export class AddingProyectPage implements OnInit {
       this.presentAlert("Todos los campos deben estar llenos")
      // this.presentAlert()
     }else{
+      if (this.plan == "") {
+        console.log("no seleccionaste plan")
+        this.presentAlert("Debes seleccionar un Plan")
+      }else{
       this.hora_inicial = parseInt($("#hora_inicial").val())
       this.hora_final = parseInt($("#hora_final").val())
       //console.log(this.hora_inicial,typeof(this.hora_inicial),this.hora_final, typeof(this.hora_final), typeof(3))
-      if(this.hora_inicial > this.hora_final){
-           console.log("la hora inicial no puede ser menor a la final")
-          this.presentAlert("La Hora final no puede ser menor a la hora inicial")
-      }else{
+      // if(this.hora_inicial > this.hora_final){
+      //      console.log("la hora inicial no puede ser menor a la final")
+      //     this.presentAlert("La Hora final no puede ser menor a la hora inicial")
+      // }else{
           console.log("entre")
           this.proyecto = $("#servicio").val()
           this.password = $("#password").val()
@@ -174,7 +180,8 @@ export class AddingProyectPage implements OnInit {
           // var ti = moment(horaenvio).format('h:mm a');
           // var dt = moment(horaenvio).format('DD-MM-YY')
           // this.firestoreService.insertar("mejoras/"+dt+"/"+nombre,"/"+edificio,{"timestamp": ti,"reporte": reporte})
-      } 
+     // } 
+    }
   }
   }
 

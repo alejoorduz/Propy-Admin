@@ -130,12 +130,14 @@ export class ScanPage implements OnInit {
   deviceSelected(device: any) {
     var deviceid = device.id;
     var devicename = device.name;
-    if(devicename == "AIRCALL SV" || devicename == "CARAPP PRUEBA BLE"){
+    if(devicename == "AIRCALL SV" || devicename == "FOOTCALL SV"){
     //console.log(deviceid + ' selected');
     this.setStatus(deviceid + ' selected');
     localStorage.setItem("uuid",deviceid);
     localStorage.setItem("use_connect","1");
-    this.modalCtrl.dismiss();
+    setTimeout(() => {
+        this.modalCtrl.dismiss();
+    }, 500);
     }else{
       this.presentAlert();
     }

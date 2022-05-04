@@ -18,7 +18,7 @@
     <div class="ver_comunicados">
             <h1 class="texto"><strong>Agregar Formulario de Google Forms</strong></h1>
             <h2 class="textodos">Accede a tu cuenta de Google forms y copia el Link para compartir formulario</h2>
-            <h3 class="textotres" (click)="GoToURL('https://docs.google.com/forms/u/0/')">https://docs.google.com/forms/u/0/<ion-icon style="color: blue;" name="share-outline"></ion-icon></h3>
+            <h3 class="textotres" (click)="modal_info('https://www.google.com/forms/about/')">https://docs.google.com/forms/u/0/<ion-icon style="color: blue;" name="share-outline"></ion-icon></h3>
             <div class="divform">
               <ion-item class="formulario">
                 <ion-label position="floating" >Nombre de encuesta</ion-label>
@@ -37,11 +37,11 @@
       <ion-grid class="grid">
         <ion-col class="col">
           <ion-row class="row" *ngFor="let numero of numeros">
-            <div class="card" tabindex="1" (click)="modal_info(numero.data.numero)">
+            <div class="card" tabindex="1" >
               <div class="imagen">
-                <ion-icon class="img-icon" name="help-circle-outline"></ion-icon>
+                <ion-icon class="img-icon" name="help-circle-outline" (click)="modal_info(numero.data.numero)" ></ion-icon>
               </div>
-              <div class="card-inner">
+              <div class="card-inner" (click)="modal_info(numero.data.numero)" >
               <div class="top">
                 <div class="titulo">  
                   <strong>{{ numero.data.nombre }}</strong>  

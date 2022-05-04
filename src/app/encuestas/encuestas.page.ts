@@ -3,7 +3,7 @@ import { FirestoreService } from '../firestore.service';
 import * as $ from "jquery";
 import { AlertController,ModalController } from '@ionic/angular';
 import { InfoPage } from "../info/info.page";
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+//import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { OpenLinkPage } from '../open-link/open-link.page';
 
 
@@ -14,7 +14,12 @@ import { OpenLinkPage } from '../open-link/open-link.page';
 })
 export class EncuestasPage implements OnInit {
 
-  constructor(private iab: InAppBrowser,private fbs: FirestoreService,private modalCtrl: ModalController ,public alertController: AlertController) { }
+  constructor(
+    //private iab: InAppBrowser,
+    private fbs: FirestoreService,
+    private modalCtrl: ModalController ,
+    public alertController: AlertController) { }
+    
   @Input() uid
   @Input() nombre
   @Input() proyecto
@@ -175,10 +180,12 @@ export class EncuestasPage implements OnInit {
   }
 
     async GoToURL(url){
-     const browser = this.iab.create(url,'_self',{location:'no'});
+     //const browser = this.iab.create(url,'_self',{location:'no'});
+    // var ref = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
   }
 
   async modal_info(url){
+    console.log(url)
     const modal = await this.modalCtrl.create({
       component: OpenLinkPage,
       cssClass: 'info_modal',

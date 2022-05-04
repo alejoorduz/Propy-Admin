@@ -119,6 +119,7 @@ downloadAndOpenPdf(urly) {
  transfer.download (downloadUrl, `${path}myfile.pdf`).then(entry => {
     let url = entry.toURL();
     if (this.platform.is('ios')) {
+    this.fileOpener.open(url, 'application/pdf');
      this.document.viewDocument(url, 'application/pdf', {});
      } else {
       this.fileOpener.open(url, 'application/pdf');
@@ -128,7 +129,7 @@ downloadAndOpenPdf(urly) {
 
 async presentLoading() {
   this.loading = await this.loadingController.create({
-    message: 'Please wait...'
+    message: 'Por favor espere...'
   });
   return this.loading.present();
 }

@@ -1,26 +1,22 @@
-<!-- <ion-header class="header">
+<ion-header class="header">
   <ion-toolbar>
-
+    <div class="headercontainer">
+        <div class="back">
+          <ion-icon name="arrow-back" class="iconoback" (click)="dismiss()"></ion-icon>
+        </div>
+      <div class="headertittle">
+        Añadir Servicio
+      </div>
+    </div>
   </ion-toolbar>
-</ion-header> -->
+</ion-header>
 
 <ion-content>
-  <div class="headercontainer">
-    <div class="back">
-      <ion-icon name="arrow-back" class="iconoback" (click)="dismiss()"></ion-icon>
-    </div>
-  <div class="headertittle">
-    Añadir Servicio
-  </div>
-<!-- <div class="headericon">
-   <ion-icon class="icono"  name="person-circle-outline" (click)="this.getLocation()"></ion-icon>
-  </div> -->
-</div>
-
+  
 <div class="todo">
 <div class="divform">
   <div class="formulario">
-    <ion-item class="nombre_servicio" mode='ios'>
+    <ion-item class="nombre_servicio" mode='ios' lines="none">
     <ion-label class="formulario__label" position="floating" >Nombre del Servicio</ion-label>
     <ion-input type="text" id="servicio" placeholder="ej: Piscina,Sauna" name="servicio" [value]="servicio"></ion-input>
     </ion-item>

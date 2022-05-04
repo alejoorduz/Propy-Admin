@@ -79,7 +79,7 @@ export class EventosPage implements OnInit {
   
   async presentLoading() {
     this.loading = await this.loadingController.create({
-      message: 'Please wait...'
+      message: 'Por favor espere...'
     });
     return this.loading.present();
   }

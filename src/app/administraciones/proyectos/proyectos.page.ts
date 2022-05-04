@@ -88,17 +88,17 @@ export class ProyectosPage implements OnInit {
 
   ngOnInit() {
   }
-//aorduz@solucionesverticales.com.co
+
   slide_change(){
     console.log("slide changed")
   }
 
    ionViewWillEnter() {
-    // this.storage.create();
-    // this.storage.get('servicio 1').then(res=>{
-    //   console.log(res)
-    // })
-    console.log("nombre: ", this.current_user_name)
+    this.presentLoading();
+    setTimeout(() => {
+     this.loading.dismiss();
+    }, 2000);
+    //console.log("nombre: ", this.current_user_name)
     this.getuseruid();
     this.getLocation();
   }
@@ -145,9 +145,31 @@ export class ProyectosPage implements OnInit {
   }
 
   async getuseruid(){
-    let uid = await (await this.afAuth.currentUser).uid
-    this.current_user_uid = uid
-    this.getName(uid);
+  //  try{
+      var user_uid = localStorage.getItem("uid");
+     //localStorage.clear();
+      console.log("traido de minibd: ", user_uid)
+      if (!user_uid) {
+        console.log("No habia ningun uid guardado")
+         var uid = await (await this.afAuth.currentUser).uid
+         localStorage.setItem("uid",uid);
+         console.log("Se guardo el UID en la miniBD:)")
+         console.log(uid)
+         this.current_user_uid = uid
+         console.log("uid:",this.current_user_uid)
+         this.getName(uid);
+      }else{
+        console.log("Ya habia valor gurdado y se uso ese")
+        this.current_user_uid = user_uid
+         console.log("uid:",this.current_user_uid)
+         this.getName(user_uid);
+      }
+   // }
+   // catch(error){
+    //  console.log("Errorsuelo:",error)
+    //  this.router.navigate(["/iniciosesion"])
+      //this.presentAlert(error);
+    //}
   }
   
   async getName(uid){
@@ -176,7 +198,7 @@ async consultar_lista_servicios(){
   } else {
     console.log("activated")
     this.activate_account = true; 
-    await this.presentLoading();
+   // await this.presentLoading();
     this.fbs.consultar("Admins/"+this.current_user_uid+"/proyectos").subscribe((servicios) => {
       this.lista_servicio = [];
       servicios.forEach((datosTarea: any) => {
@@ -185,10 +207,10 @@ async consultar_lista_servicios(){
           data: datosTarea.payload.doc.data()
         });
       })
-      this.loading.dismiss();
+    //  this.loading.dismiss();
       console.log("lista de servicios: " , this.lista_servicio)
        if (this.lista_servicio.length === 0) { 
-      console.log("usuario nuevo sin negocio")
+     // console.log("usuario nuevo sin negocio")
       this.new_user = true;      
     } else {
       this.new_user = false;
@@ -201,7 +223,7 @@ async consultar_lista_servicios(){
 
 async presentLoading() {
   this.loading = await this.loadingController.create({
-    message: 'Porfavor espere...'
+    message: 'Por favor espere...'
   });
   return this.loading.present();
 }
@@ -289,6 +311,7 @@ async presentLoading() {
   }
 
    cerrarsesion(){
+     localStorage.setItem("uid","")
       this.authSvc.logout();
       this.router.navigate(["/iniciosesion"])
     }

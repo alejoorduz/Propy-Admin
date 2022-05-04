@@ -153,9 +153,12 @@ ion-header{
       //left: 10%;
   }
   .nombre_servicio{
-    border:solid rgb(112, 51, 204) 1px;
-    border-radius: 30px;
+      border:solid rgb(112, 51, 204) 1px;
+      border-radius: 30px;
+    --background: white;
+    --border-radius: 20px;
   }
+
   .divform{
      // margin-top: 40px;
       width: 100%;

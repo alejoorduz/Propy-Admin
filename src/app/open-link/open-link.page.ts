@@ -24,6 +24,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./open-link.page.scss'],
   providers: [File,DocumentViewer]
 })
+
 export class OpenLinkPage implements OnInit {
 
   constructor(

@@ -14,7 +14,7 @@
 <ion-content>
   <div class="todo">
     <div class="ver_comunicados">
-      <h1 class="texto">Autorizaciones 
+      <h1 class="texto">Autorizaciones en {{this.proyecto}}
 
       </h1>
       <ion-grid class="grid">
@@ -35,10 +35,10 @@
                   </div>
               </div>
                 <div class="tema">
-                  {{comunicado.data.apto}}
+                  Apto: {{comunicado.data.apto}}
                 </div>
                 <div class="reporte">
-                  {{comunicado.data.reporte}}
+                  Autorización: {{comunicado.data.reporte}}
               </div>
                  <!-- <ion-icon slot="end" class="trash-icon" (click)="delete(comunicado.id)" name="trash-outline"></ion-icon> -->
             </div>

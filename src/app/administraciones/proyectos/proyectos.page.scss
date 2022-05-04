@@ -1,11 +1,11 @@
 //HEADER-------------------------------------------------
 ion-header{
-    background-color: var(--ion-color-primary);
+    background-color: white;
     color: black;
     justify-items: center;
     align-items: center;
     border: none;
-    margin-top: var(--ion-safe-area-top);
+   // margin-top: var(--ion-safe-area-top);
   }
   
   ion-toolbar {
@@ -84,6 +84,7 @@ ion-header{
     }
     
     .new_user{
+      margin-top: 30px;
       display: flex;
       justify-content: center;
       align-items: center;

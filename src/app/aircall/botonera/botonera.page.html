@@ -140,16 +140,16 @@
           <p id="aviso_modo"></p>
         </div>
      <div class="position-keypad">
-          <div class="align-center" >
-              <ion-grid class="grid" >
-                <ion-row class="row" >
+          <div class="align-center">
+              <ion-grid class="grid">
+                <ion-row class="row">
                     <div class="col" *ngFor="let floor of selected_floors">
-                      <button [disabled]="cancelado" id="Rock" class="buttonpad" (click)="Connected(floor.code,floor.nombre,0)">{{floor.valor}}</button>
+                       <button [disabled]="cancelado" id="Rock" class="buttonpad" (click)="Connected(floor.code,floor.nombre,0)">{{floor.valor}}</button>
                     </div>
                 </ion-row>
               </ion-grid>
             </div>
-      </div>
+       </div>
     </div>
   </div>
 

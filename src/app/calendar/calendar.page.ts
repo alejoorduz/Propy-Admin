@@ -252,13 +252,14 @@ export class CalendarPage implements OnInit {
   }
 
 addNewEvent() {
+  this.has_events = false;
   if (this.has_events) {
     //console.log("no puedes reservas a esta hora")
-    this.presentAlertBlock("Hora con Reserva","No puedes reservas porque alguien ya tiene esta hora reservada")
+    this.presentAlertBlock("Hora con Reserva","No puedes reservar porque alguien ya tiene esta hora reservada")
   } else {
     if(this.hora_bloqueada){
         console.log("no puedes reservas a esta hora")
-        this.presentAlertBlock("Hora Restringida","No puedes reservar a esta hora, elige otra que este disponible")
+        this.presentAlertBlock("Hora Restringida","Esta hora esta bloqueada por el Administrador, elige otra que este disponible")
       }else{
         console.log("añadir evento")
             // this.eventSource = [];
@@ -314,7 +315,7 @@ addNewEvent() {
   }
 
   dismiss(){
-    this.router.navigate(["proyectos"])
+    this.router.navigate(["proyectos/"])
   }
 
   async presentAlertBlock(header,text) {

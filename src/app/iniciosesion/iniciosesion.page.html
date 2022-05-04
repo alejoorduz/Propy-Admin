@@ -1,17 +1,16 @@
-<!--<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
      <div class="headercontainer">
       <div class="back">
 
       </div>
   <div class="headertittle">
-    <ion-title >Iniciar Sesión</ion-title>
   </div>
   <div class="headericon">
     </div>
   </div> 
   </ion-toolbar>
-</ion-header>-->
+</ion-header> -->
 
 <ion-content>
 
@@ -22,9 +21,9 @@
     </div>
   <form class="form">
     <div class="div_email">
-    <ion-item class="email" lines="none">
+    <ion-item class="email" lines="none" mode="ios">
       <ion-label position="floating">E-mail</ion-label>
-      <ion-input type="text" #email required></ion-input>
+      <ion-input type="text" id="email" #email required ></ion-input>
     </ion-item>
     </div>
     <div class="olvide">
@@ -33,11 +32,10 @@
       </p>
     </div>
   
- 
   <div class="div_contra">
     <ion-item class="contra" lines="none">
       <ion-label class="label" position="floating">Contraseña</ion-label>
-      <ion-input class="input" type="password" #password required></ion-input>
+      <ion-input class="input" type="password" id="password" #password required ></ion-input>
     </ion-item>
   </div>
   <div class="olvide">
@@ -45,7 +43,13 @@
       <a (click)="recuperacion()">Olvide la Contraseña</a>
     </p>
   </div>
-
+  <div class="olvides">
+    <p class="ubicars">
+      Recordarme
+    </p>
+    <ion-checkbox color="primary" id="basico" (click)="checkbasic()"></ion-checkbox>
+  </div>
+  
     <div class="div_logins">
     <ion-row>
       <ion-col>

@@ -1,14 +1,17 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <div class="headercontainer">
+      <div class="back">
+        <ion-icon name="arrow-back" class="iconoback" (click)="dismiss()"></ion-icon>
+      </div>
+      <div class="headertittle">
+        Usuarios 
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-  <div class="headercontainer">
-    <div class="back">
-      <ion-icon name="arrow-back" class="iconoback" (click)="dismiss()"></ion-icon>
-    </div>
-    <div class="headertittle">
-      Usuarios 
-    </div>
-  </div>
-
 <div class="todo">
     <div class="ver_comunicados">
             <h1 class="texto">Usuarios del Edificio {{this.proyecto}}</h1>

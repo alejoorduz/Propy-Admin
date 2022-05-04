@@ -77,6 +77,8 @@ ion-header{
   .input_box{
       border-radius: 30px;
       border:solid rgb(112, 51, 204) 1px;
+      --background: white;
+      --border-radius: 20px;
   }
   
   .week_selector{
@@ -193,12 +195,14 @@ ion-header{
      // background-color: rebeccapurple;
   }
   
-  // .formulario__label{
-  //    // width: 80%;
-  //    border: solid black 1px;
-  //    // background-color: royalblue;
-  // }
-  
+  .formulario__label{
+      // width: 80%;
+      border-radius: 30px;
+      //border: solid black 1px;
+      background-color: white;
+ }
+
+
   .formulario__week{
       display: flex;
       justify-content: center;
