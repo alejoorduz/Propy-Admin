@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { ModalController } from "@ionic/angular";
+import { ModalController,AlertController } from "@ionic/angular";
 import { AddingProyectPage } from "../../administraciones/adding-proyect/adding-proyect.page";
 import { EditingProyectPage } from "../../administraciones/editing-proyect/editing-proyect.page";
 import { InicioPage } from "../../inicio/inicio.page";
@@ -45,7 +45,9 @@ export class ProyectosPage implements OnInit {
   aircall:string;
 
   lista_servicio = [];
-  array_servicios_admin: string
+  array_servicios_admin: string;
+  account_config_ok: Boolean;
+  profile_image_yes: boolean;
 
   new_user: boolean;
   activate_account: boolean;
@@ -57,8 +59,21 @@ export class ProyectosPage implements OnInit {
   current_user_email;
   current_user_rol;
   current_user_activate;
+  current_user_apto;
+  current_user_image;
   
-  constructor(private loadingController: LoadingController,public router: Router,private geolocation: Geolocation,private modalCtrl: ModalController,private storage: Storage,private fbs: FirestoreService ,private authSvc: AuthService,public afAuth:AngularFireAuth, private afs: AngularFirestore) { }
+  constructor(
+    private loadingController: LoadingController,
+    public router: Router,
+    private geolocation: Geolocation,
+    private modalCtrl: ModalController,
+    private storage: Storage,
+    private fbs: FirestoreService ,
+    private authSvc: AuthService,
+    public afAuth:AngularFireAuth,
+     private afs: AngularFirestore) { 
+       
+     }
 
   proyecto:string;
 
@@ -95,9 +110,9 @@ export class ProyectosPage implements OnInit {
 
    ionViewWillEnter() {
     this.presentLoading();
-    setTimeout(() => {
-     this.loading.dismiss();
-    }, 2000);
+    // setTimeout(() => {
+    //  this.loading.dismiss();
+    // }, 2000);
     //console.log("nombre: ", this.current_user_name)
     this.getuseruid();
     this.getLocation();
@@ -145,31 +160,31 @@ export class ProyectosPage implements OnInit {
   }
 
   async getuseruid(){
-  //  try{
+    //try{
       var user_uid = localStorage.getItem("uid");
-     //localStorage.clear();
-      console.log("traido de minibd: ", user_uid)
-      if (!user_uid) {
-        console.log("No habia ningun uid guardado")
-         var uid = await (await this.afAuth.currentUser).uid
-         localStorage.setItem("uid",uid);
-         console.log("Se guardo el UID en la miniBD:)")
-         console.log(uid)
-         this.current_user_uid = uid
-         console.log("uid:",this.current_user_uid)
-         this.getName(uid);
-      }else{
-        console.log("Ya habia valor gurdado y se uso ese")
-        this.current_user_uid = user_uid
-         console.log("uid:",this.current_user_uid)
-         this.getName(user_uid);
-      }
+      //localStorage.clear();
+      // console.log("traido de minibd: ", user_uid)
+       if (!user_uid) {
+        // console.log("No habia ningun uid guardado")
+          var uid = await (await this.afAuth.currentUser).uid
+          localStorage.setItem("uid",uid);
+         // console.log("Se guardo el UID en la miniBD:)")
+         // console.log(uid)
+          this.current_user_uid = uid
+         // console.log("uid:",this.current_user_uid)
+          this.getName(uid);
+       }else{
+        // console.log("Ya habia valor gurdado y se uso ese")
+         this.current_user_uid = user_uid
+        //  console.log("uid:",this.current_user_uid)
+          this.getName(user_uid);
+       }
    // }
-   // catch(error){
-    //  console.log("Errorsuelo:",error)
-    //  this.router.navigate(["/iniciosesion"])
-      //this.presentAlert(error);
-    //}
+    // catch(error){
+    //   console.log("Errorsuelo:",error)
+    //   this.router.navigate(["/iniciosesion"])
+    //   //this.presentAlert(error);
+    // }
   }
   
   async getName(uid){
@@ -182,11 +197,29 @@ export class ProyectosPage implements OnInit {
       this.current_user_email = this.user_info.data.email;
       this.current_user_rol = this.user_info.data.rol;
       this.current_user_activate = this.user_info.data.habilitado
+      this.current_user_apto = this.user_info.data.apto;
+      this.current_user_image = this.user_info.data.image_url;
       console.log("el usuario esta activado? :",this.current_user_activate)
       //let email = this.user_info.data.email;
       //this.proyecto = this.user_info.data.proyecto
       this.consultar_lista_servicios()
-      //console.log("usuario: ",name,email,this.proyecto)
+      console.log("Apartamento, img url ",this.current_user_apto, this.current_user_image)
+
+        //this.current_user_apto = "4048"
+  if (this.current_user_apto) {
+    console.log("si hay algo en 'apto'")
+    this.account_config_ok = true;
+  }else{
+    console.log("No hay nada en 'apto'")
+    this.account_config_ok = false;
+  }
+  if (this.current_user_image) {
+    console.log("Si hay algo en 'image_url'")
+    this.profile_image_yes = true;
+  }else{
+    console.log("No hay nada en 'image_url'")
+    this.profile_image_yes = false;
+  }
   });
   }
 
@@ -216,6 +249,9 @@ async consultar_lista_servicios(){
       this.new_user = false;
       console.log("usuario nuevo viejo")
     }
+    setTimeout(() => {
+      this.loading.dismiss();
+     }, 800);
     });
     
   }
@@ -223,7 +259,7 @@ async consultar_lista_servicios(){
 
 async presentLoading() {
   this.loading = await this.loadingController.create({
-    message: 'Por favor espere...'
+    message: 'Obteniendo datos, por favor espere...'
   });
   return this.loading.present();
 }
@@ -251,15 +287,22 @@ async presentLoading() {
         uid: this.current_user_uid,
         nombre: this.current_user_name,
         email: this.current_user_email,
-        rol: this.current_user_rol
+        rol: this.current_user_rol,
+        apto: this.current_user_apto,
+        image_url: this.current_user_image
       }
     });
     modal.onDidDismiss()
     .then((data) => {
-        //   this.storage.forEach((value, key, index) => {
-        //   console.log(`ITEM - ${key} = ${value} [${index}]`);
-        // });
-      
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        console.log("volvi de perfil con bandera en true",closing)
+       // this.modalCtrl.dismiss()
+      }else{
+        console.log("Volvi con bandera en false,", closing)
+      }       
   });
     return await modal.present();
   }

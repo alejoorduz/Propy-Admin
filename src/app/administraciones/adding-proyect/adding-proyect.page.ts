@@ -62,6 +62,41 @@ export class AddingProyectPage implements OnInit {
     await this.storage.create();
   }
 
+  checkbuilding(){
+    console.log("Es un edificio seguro: ")
+    console.log($("#build").prop("checked"))
+    if ($("#build").prop("checked") === false) {
+      $("#lunes").prop("checked",true)
+      $("#martes").prop("checked",true)
+      $("#miercoles").prop("checked",true)
+      $("#jueves").prop("checked",true)
+      $("#viernes").prop("checked",true)
+      $("#sabado").prop("checked",true)
+      $("#domingo").prop("checked",true)
+      $("#basico").prop("checked",true)
+      //$("#hora_inicial").prop("checked",true)
+      //this.hora_inicial = 1
+      this.plan = "basico";
+      $("#hora_inicial").val(1).change();
+      $("#hora_final").val(24).change();
+      console.log("El servicio si es un edificio!")
+    }else{
+      $("#lunes").prop("checked",false)
+      $("#martes").prop("checked",false)
+      $("#miercoles").prop("checked",false)
+      $("#jueves").prop("checked",false)
+      $("#viernes").prop("checked",false)
+      $("#sabado").prop("checked",false)
+      $("#domingo").prop("checked",false)
+      $("#basico").prop("checked",false)
+      //$("#hora_inicial").prop("checked",true)
+      //this.hora_inicial = 1
+      this.plan = "";
+      $("#hora_inicial").val("").change();
+      $("#hora_final").val("").change();
+    }
+  }
+
   checkbasic(){
     console.log("Plan basico: ")
     console.log($("#basico").prop("checked"))

@@ -4,7 +4,6 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore,AngularFirestoreDocument } from "@angular/fire/compat/firestore";
 
 import firebase from 'firebase/compat/app';
-
 import { Observable, of } from 'rxjs';
 
 //import { relativeTimeRounding } from 'moment';
@@ -48,6 +47,7 @@ export class AuthService {
 
 
   async getCurrentUID(): Promise<void>{
+    console.log("current uid:")
   //let uid = await this.afAuth.currentUser()
   }
 
@@ -62,7 +62,7 @@ export class AuthService {
     }
     catch(error){
       console.log("Error:",error)
-      this.presentAlert(error);
+      this.presentAlert("No se pudo restablecer la contraseña, intentalo de nuevo");
     }
   }
 
@@ -87,7 +87,7 @@ export class AuthService {
     }
     catch(error){
       console.log("Error:",error)
-      this.presentAlert(error);
+      this.presentAlert("No se pudo completar el registro, verifica tus datos e intentalo de nuevo (No usar autorelleno)");
     }
   }
 
@@ -97,7 +97,7 @@ export class AuthService {
     }
     catch(error){
       console.log("Error:",error)
-      this.presentAlert(error);
+      this.presentAlert("No se pudo enviar el mensaje, intentalo de nuevo");
     }
   }
 
@@ -108,8 +108,8 @@ export class AuthService {
       return user
     }
     catch(error){
-      console.log("Error:",error)
-      this.presentAlert(error);
+      console.log("Errorsito:",error)
+      this.presentAlert("Verifica el usuario o la contraseña");
     }
   }
 

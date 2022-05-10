@@ -16,7 +16,6 @@ export class UsuariosPage implements OnInit {
   @Input() nombre
   @Input() proyecto
 
-  
   tittle: string
   tema: string
   reporte: string

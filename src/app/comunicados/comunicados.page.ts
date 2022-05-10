@@ -44,26 +44,28 @@ export class ComunicadosPage implements OnInit {
 }
 
   upload_publication(){
-    if ($("#tittle").val() == "" || $("#tema").val() == "" || $("#reporte").val() == "") {
-      this.presentAlert("Debes rellenar todos los espacios")
-    console.log("rellena todo maldito")
-    } else {
-       var timei = new Date(Date.now());
-    var ti = moment(timei).format('h:mm:ss a'); 
-    var dt = moment(timei).format('DD-MM-YYYY'); 
-    console.log("AHSHAJWSasasJDJA")
-    let comunicado = {
-      titulo: this.tittle,
-      tema: this.tema,
-      reporte: this.reporte,
-      dia: dt,
-      hora: ti
-    };
-    this.firestoreService.add("Proyectos/"+this.proyecto+"/comunicados", comunicado )
-    $("#tittle").val("")
-    $("#tema").val("")
-    $("#reporte").val("")
-    this.presentAlertdone();
+    const res = confirm("¿Deseas subir este comunicado?");
+    if(res){
+        if ($("#tittle").val() == "" || $("#tema").val() == "" || $("#reporte").val() == "") {
+          this.presentAlert("Debes rellenar todos los espacios")
+        console.log("rellena todo maldito")
+        } else {
+          var timei = new Date(Date.now());
+        var ti = moment(timei).format('h:mm:ss a'); 
+        var dt = moment(timei).format('DD-MM-YYYY');
+        let comunicado = {
+          titulo: this.tittle,
+          tema: this.tema,
+          reporte: this.reporte,
+          dia: dt,
+          hora: ti
+        };
+        this.firestoreService.add("Proyectos/"+this.proyecto+"/comunicados", comunicado )
+        $("#tittle").val("")
+        $("#tema").val("")
+        $("#reporte").val("")
+        this.presentAlertdone();
+        }
     }
   }
 
@@ -86,8 +88,8 @@ export class ComunicadosPage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Listo!',
-      subHeader: 'Formulario enviado con exito',
-      message: 'Gracias por tus sugerencias.',
+      subHeader: 'Comunicado enviado con exito',
+      message: 'Abajo puedes ver tus comunicados.',
       buttons: ['OK']
     });
   
@@ -102,20 +104,11 @@ export class ComunicadosPage implements OnInit {
   }
 
   delete(comunicado){
-    //console.log("borrando base de datos de",this.current_user_uid,  " del proyecto ",proyecto)
-    this.fbs.delete_doc("Proyectos/"+this.proyecto+"/comunicados", comunicado).then(() => {
-      // Actualizar la lista completa
-     // this.consultar_lista_servicios();
-      // Limpiar datos de pantalla
-      //this.tareaEditando = {} as Tarea;
-    })
-  
-    // this.fbs.delete_doc("Admins/"+this.current_user_uid+"/proyectos",proyecto).then(() => {
-    //   // Actualizar la lista completa
-    //   this.consultar_lista_servicios();
-    //   // Limpiar datos de pantalla
-    //   //this.tareaEditando = {} as Tarea;
-    // })
-    
+    const res = confirm("¿Estas seguro que quieres eliminar este comunicado?");
+    if(res){
+        this.fbs.delete_doc("Proyectos/"+this.proyecto+"/comunicados", comunicado).then(() => {
+          
+        })
+    }
   }
 }
