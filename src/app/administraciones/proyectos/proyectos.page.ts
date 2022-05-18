@@ -313,7 +313,8 @@ async presentLoading() {
       cssClass: 'adding_modal',
       componentProps: {
         uid: this.current_user_uid,
-        nombre: this.current_user_name
+        nombre: this.current_user_name,
+        email: this.current_user_email
       }
     });
     modal.onDidDismiss()

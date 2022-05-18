@@ -17,6 +17,7 @@ export class AddingProyectPage implements OnInit {
 
   @Input() uid
   @Input() nombre
+  @Input() email
   //-----------------datos del formulario--------------------------
   //servicio del edificio
   proyecto: string  //= "Piscina"
@@ -246,10 +247,11 @@ export class AddingProyectPage implements OnInit {
     this.firestoreService.updatedos("Admins",this.uid,"proyectos", this.proyecto,  {"viernes": this.viernes}  )
     this.firestoreService.updatedos("Admins",this.uid,"proyectos", this.proyecto,   {"sabado": this.sabado} )
     this.firestoreService.updatedos("Admins",this.uid,"proyectos", this.proyecto,   {"domingo": this.domingo} )
-    
     if(this.plan === "basico"){
       console.log("si, basico")
       this.firestoreService.insertar("Proyectos", this.proyecto, {"horainicial": this.hora_inicial} )
+      this.firestoreService.update("Proyectos", this.proyecto,  {"admin_email": this.email})
+      this.firestoreService.update("Proyectos", this.proyecto,  {"admin_name": this.nombre})
       this.firestoreService.update("Proyectos", this.proyecto, {"horafinal": this.hora_final} )
       this.firestoreService.update("Proyectos", this.proyecto, {"lunes": this.lunes} )
       this.firestoreService.update("Proyectos", this.proyecto,  {"martes": this.martes} )
@@ -279,6 +281,7 @@ export class AddingProyectPage implements OnInit {
       this.firestoreService.update("Proyectos", this.proyecto,  {"beneficios": false} )
       this.firestoreService.update("Proyectos", this.proyecto,   {"seguridad": false} )
       this.firestoreService.update("Proyectos", this.proyecto,  {"citofonia": false} )
+      this.firestoreService.update("Proyectos", this.proyecto,  {"votaciones": false} )
     }
 
     if(this.plan === "estandar"){

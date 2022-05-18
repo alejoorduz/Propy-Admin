@@ -19,6 +19,10 @@ export class UsuariosPage implements OnInit {
   tittle: string
   tema: string
   reporte: string
+
+  habilitado: boolean;
+  torre: string;
+  apto: string;
   usuarios = [];
 
   ngOnInit() {
@@ -65,6 +69,25 @@ export class UsuariosPage implements OnInit {
     }
   }
 
+  save_user_apto(user,torre,apto){
+    const res = confirm("Quieres asignar el apartamento " + torre + " " + apto + " al usuario " + user + "?") ;
+    if(res){
+      this.fbs.update("Proyectos/"+this.proyecto+"/usuarios/",user,{"torre": torre})
+      this.fbs.update("Proyectos/"+this.proyecto+"/usuarios/",user,{"apto": apto})
+      this.fbs.insertar("Proyectos/"+this.proyecto+"/apartamentos/"+torre+"/aptos/"+apto+"/inquilinos",user,{rol: "inquilino"})
+      this.presentAlertdone();
+    }
+    
+  }
+
+  habilitar(user,habilitado){
+    const res = confirm("¿Quieres cambiar el estado del usuario " + user + "?") ;
+    if(res){
+      this.fbs.update("Proyectos/"+this.proyecto+"/usuarios/",user,{"habilitado": !habilitado})
+    }
+   
+  }
+
   async presentAlert(mensaje) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -83,9 +106,9 @@ export class UsuariosPage implements OnInit {
   async presentAlertdone() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Listo!',
-      subHeader: 'Formulario enviado con exito',
-      message: 'Gracias por tus sugerencias.',
+      header: '¡Listo!',
+      subHeader: 'Se actualizó el apartamento',
+      message: 'Notifica al usuario de este cambio',
       buttons: ['OK']
     });
   

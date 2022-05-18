@@ -153,6 +153,10 @@ const routes: Routes = [
   },  {
     path: 'open-link',
     loadChildren: () => import('./open-link/open-link.module').then( m => m.OpenLinkPageModule)
+  },
+  {
+    path: 'votaciones',
+    loadChildren: () => import('./votaciones/votaciones.module').then( m => m.VotacionesPageModule)
   }
 
 ];

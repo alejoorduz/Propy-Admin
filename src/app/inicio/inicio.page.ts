@@ -29,6 +29,7 @@ import { PreguntasPage } from "../preguntas/preguntas.page";
 import { AccesoPage } from "../acceso/acceso.page";
 import { EventosPage } from "../eventos/eventos.page";
 import { CitofoniaPage } from "../citofonia/citofonia.page";
+import { VotacionesPage } from "../votaciones/votaciones.page";
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -102,8 +103,13 @@ name: any
     icon:"newspaper-outline",
     "habilitado":true},
 
+    {"nombre":"Votaciones",
+    "descripcion":"Votaciones de los usuarios",
+    icon:"pie-chart-outline",
+    "habilitado":true},
+
     {"nombre":"Ingreso Mascotas",
-    "descripcion":"Temas relacionados con tu mascota",
+    "descripcion":"Lista de mascotas de los usuarios",
     icon:"paw-outline",
     "habilitado":true},
 
@@ -233,24 +239,25 @@ name: any
         this.servicios[0].habilitado = this.proyect_services.data.reservas;
         this.servicios[1].habilitado = this.proyect_services.data.aircall;
         this.servicios[2].habilitado = this.proyect_services.data.comunicados;
-        this.servicios[3].habilitado = this.proyect_services.data.mascotas;
-        this.servicios[4].habilitado = this.proyect_services.data.trasteo;
-        this.servicios[5].habilitado = this.proyect_services.data.directorio;
-        this.servicios[6].habilitado = this.proyect_services.data.autorizaciones;
-        this.servicios[7].habilitado = this.proyect_services.data.preguntas;
-        this.servicios[8].habilitado = this.proyect_services.data.emergencias;
-        this.servicios[9].habilitado = this.proyect_services.data.eventos;
-        this.servicios[10].habilitado = true;
-        this.servicios[11].habilitado = this.proyect_services.data.documentos;
-        this.servicios[12].habilitado = this.proyect_services.data.clasificados;
-        this.servicios[13].habilitado = this.proyect_services.data.encuestas;
-        this.servicios[14].habilitado = this.proyect_services.data.beneficios;
-        this.servicios[15].habilitado = this.proyect_services.data.acceso;
-        this.servicios[16].habilitado = this.proyect_services.data.pagos;
-        this.servicios[17].habilitado = this.proyect_services.data.monitoreo;
-        this.servicios[18].habilitado = this.proyect_services.data.finanzas;
-        this.servicios[19].habilitado = this.proyect_services.data.seguridad;
-        this.servicios[20].habilitado = this.proyect_services.data.citofonia;
+        this.servicios[3].habilitado = this.proyect_services.data.votaciones;
+        this.servicios[4].habilitado = this.proyect_services.data.mascotas;
+        this.servicios[5].habilitado = this.proyect_services.data.trasteo;
+        this.servicios[6].habilitado = this.proyect_services.data.directorio;
+        this.servicios[7].habilitado = this.proyect_services.data.autorizaciones;
+        this.servicios[8].habilitado = this.proyect_services.data.preguntas;
+        this.servicios[9].habilitado = this.proyect_services.data.emergencias;
+        this.servicios[10].habilitado = this.proyect_services.data.eventos;
+        this.servicios[11].habilitado = true;
+        this.servicios[12].habilitado = this.proyect_services.data.documentos;
+        this.servicios[13].habilitado = this.proyect_services.data.clasificados;
+        this.servicios[14].habilitado = this.proyect_services.data.encuestas;
+        this.servicios[15].habilitado = this.proyect_services.data.beneficios;
+        this.servicios[16].habilitado = this.proyect_services.data.acceso;
+        this.servicios[17].habilitado = this.proyect_services.data.pagos;
+        this.servicios[18].habilitado = this.proyect_services.data.monitoreo;
+        this.servicios[19].habilitado = this.proyect_services.data.finanzas;
+        this.servicios[20].habilitado = this.proyect_services.data.seguridad;
+        this.servicios[21].habilitado = this.proyect_services.data.citofonia;
 
         console.log("auth: ", this.servicios[13])
         console.log("auth: ", this.proyect_services.data)
@@ -281,6 +288,10 @@ name: any
      // console.log("comunicados if")
       this.modal_comunicados();
     }
+    if (servicio == "Votaciones") {
+      // console.log("comunicados if")
+       this.modal_votaciones();
+     }
     if (servicio == "Documentos") {
       console.log("Documentos");
       this.modal_documentos();
@@ -500,6 +511,32 @@ name: any
   async modal_comunicados(){
     const modal = await this.modalCtrl.create({
       component: ComunicadosPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        //reserva: this.reserva
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
+  }
+
+  
+  async modal_votaciones(){
+    const modal = await this.modalCtrl.create({
+      component: VotacionesPage,
       cssClass: 'adding_modal',
       componentProps: {
         uid: this.uid,

@@ -18,27 +18,56 @@
             <ion-grid class="grid">
               <ion-col class="col">
                 <ion-row class="row" *ngFor="let usuario of usuarios">
-                    <div class="card">
+                    <div class="card" [class.blur]="!usuario.data.habilitado">
                       <div class="top">
-                        <div class="titulo">  
-                          <strong>{{ usuario.id }}</strong>  
+                        <div class="titulo"> 
+                          <button class="habil_button" *ngIf="!usuario.data.habilitado" (click)="habilitar(usuario.id,usuario.data.habilitado)">
+                            <label >Habilitar</label>
+                          </button>
+                          <button class="deshabil_button" *ngIf="usuario.data.habilitado" (click)="habilitar(usuario.id,usuario.data.habilitado)">
+                            <label>Inhabilitar</label>
+                          </button> 
+                                                  
                         </div>
-                        <!-- <div class="dia_hora">  
-                          <div class="dia">
-                              {{ comunicado.data.dia }}  
+                        
+                        <div class="dia_hora">  
+                         <div *ngIf="usuario.data.habilitado" class="dia" >
+                             <h3 style="color: green;font-size: 10px;">Habilitado</h3>  
                           </div>
-                          <div class="hora">
-                            {{ comunicado.data.hora }} 
+                          <div *ngIf="!usuario.data.habilitado" class="hora">
+                            <h3 style="color: red;font-size: 10px;">Deshabilitado</h3>
                         </div>
-                        </div> -->
+                        </div>
                     </div>
-                      <!-- <div class="tema">
-                        Tema:  {{comunicado.data.tema}} 
+                       
+                    <div class="reporte">
+                      <strong>{{ usuario.id }}</strong>
+                    </div>
+                     <ion-label class="plain_text">Torre y apartamento (Bloque,Interior,etc):</ion-label>
+                      <div class="tema">                      
+                          <ion-item class="input" lines="none" mode="ios">
+                            <ion-label position="floating">Torre</ion-label>
+                            <ion-input type="text" id="torre" placeholder="Torre B" [(ngModel)]="usuario.data.torre"></ion-input>
+                          </ion-item>
+
+                          <ion-item class="input" lines="none" mode="ios">
+                            <ion-label position="floating">Apto</ion-label>
+                            <ion-input type="text" id="apto" placeholder="307" [(ngModel)]="usuario.data.apto" ></ion-input>
+                          </ion-item>
+                          
+                        <!-- Torre: {{usuario.data.torre }} - Apto: {{usuario.data.apto }} 
+                        <ion-icon name="create-outline"></ion-icon> -->
                       </div>
                       <div class="reporte">
-                        {{comunicado.data.reporte}} 
-                    </div> -->
+                      <button class="save" (click)="save_user_apto(usuario.id,usuario.data.torre,usuario.data.apto)">
+                        <label>Guardar</label>
+                      </button>
+                      <!-- <ion-button>
+                        <label>Inhabilitar</label>
+                      </ion-button> -->
+                    </div>
                        <!-- <ion-icon class="trash-icon" (click)="delete(usuario.id)" name="trash-outline"></ion-icon> -->
+                       <!-- <ion-icon name="create-outline"></ion-icon> -->
                   </div>
                 </ion-row>
               </ion-col>
