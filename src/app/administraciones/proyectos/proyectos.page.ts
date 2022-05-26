@@ -64,6 +64,7 @@ export class ProyectosPage implements OnInit {
   
   constructor(
     private loadingController: LoadingController,
+    private alertCtrl: AlertController,
     public router: Router,
     private geolocation: Geolocation,
     private modalCtrl: ModalController,
@@ -386,6 +387,37 @@ show_delete(){
     this.show_delete_button = true;
     $(".show_delete").css('color', 'orange');
   }
+}
+
+async presentAlert(servicio) {
+  const alert = await this.alertCtrl.create({
+    cssClass: 'my-custom-class',
+    header: '¿Estas seguro?',
+    subHeader: 'Estas a punto de eliminar el proyecto ' + servicio,
+    message: "Perderás toda la informacion y los datos relacionados"  ,
+    buttons: [
+      {
+        text: 'Atrás',
+        role: 'cancel',
+        cssClass: 'secondary',
+        id: 'cancel-button',
+        handler: (blah) => {
+        //  console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Confirmar',
+        id: 'confirm-button',
+        handler: () => {
+          //console.log('Confirm Okay');
+          this.delete(servicio)
+        }
+      }
+    ]
+  });
+  await alert.present();
+
+// const { role } = await alert.onDidDismiss();
+// console.log('onDidDismiss resolved with role', role);
 }
 
 // perfil(){

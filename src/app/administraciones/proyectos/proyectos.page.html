@@ -71,7 +71,7 @@
 
 <ion-slides [options]="option" #slideWithNav pager="true">
   <ion-slide class="slide" *ngFor="let servicio of lista_servicio">
-    <ion-card (click)="modal_proyecto(servicio.id,servicio.data.reservas,servicio.data.pagos,servicio.data.comunicados,servicio.data.documentos,servicio.data.monitoreo,servicio.data.aircall,true)">
+    <ion-card (click)="modal_proyecto(servicio.id,servicio.data.reservas,servicio.data.pagos,servicio.data.comunicados,servicio.data.documentos,servicio.data.monitoreo,servicio.data.aircall)">
       <ion-card-header>
         <!-- <ion-card-subtitle>Negocio</ion-card-subtitle> -->
         <ion-icon class="building" name="business-outline"></ion-icon>
