@@ -337,11 +337,12 @@ ion-content {
   
   ion-header{
     height: 43px;
+    width: 100%;
     font-size: 40px;
     justify-items: center;
     align-items: center;
-    ;
   }
+  
   ion-footer{
     display: flex;
     height: 50px;

@@ -33,6 +33,7 @@ export class AddingProyectPage implements OnInit {
 
   //Plan elegido por usuario
   plan: string = "";
+  config_rapida_edificio: boolean;
   //servicios disponibles por la app
   // reservas: boolean
   // pagos: boolean = false
@@ -64,9 +65,21 @@ export class AddingProyectPage implements OnInit {
   }
 
   checkbuilding(){
-    console.log("Es un edificio seguro: ")
-    console.log($("#build").prop("checked"))
+    console.log("Es un edificio seguro: ",$("#build").prop("checked"))
     if ($("#build").prop("checked") === false) {
+      this.config_rapida_edificio = true
+      $("#bass").prop("disabled", true);
+      $("#lunes").prop("disabled", true);
+      $("#martes").prop("disabled", true);
+      $("#miercoles").prop("disabled", true);
+      $("#jueves").prop("disabled", true);
+      $("#viernes").prop("disabled", true);
+      $("#sabado").prop("disabled", true);
+      $("#domingo").prop("disabled", true);
+      $("#hora_inicial").prop("disabled", true);
+      $("#hora_final").prop("disabled",true)
+
+      $("#bass").prop("checked",true)
       $("#lunes").prop("checked",true)
       $("#martes").prop("checked",true)
       $("#miercoles").prop("checked",true)
@@ -74,14 +87,27 @@ export class AddingProyectPage implements OnInit {
       $("#viernes").prop("checked",true)
       $("#sabado").prop("checked",true)
       $("#domingo").prop("checked",true)
-      $("#basico").prop("checked",true)
       //$("#hora_inicial").prop("checked",true)
       //this.hora_inicial = 1
       this.plan = "basico";
+     // this.checkbasic(true);
       $("#hora_inicial").val(1).change();
       $("#hora_final").val(24).change();
-      console.log("El servicio si es un edificio!")
+      console.log("El servicio si es un edificio y van con este plan!", this.plan)
     }else{
+      this.config_rapida_edificio = false
+      $("#bass").prop("disabled", false)
+      $("#lunes").prop("disabled", false);
+      $("#martes").prop("disabled", false);
+      $("#miercoles").prop("disabled", false);
+      $("#jueves").prop("disabled", false);
+      $("#viernes").prop("disabled", false);
+      $("#sabado").prop("disabled", false);
+      $("#domingo").prop("disabled", false);
+      $("#hora_inicial").prop("disabled", false);
+      $("#hora_final").prop("disabled",false)
+
+      $("#bass").prop("checked",false)
       $("#lunes").prop("checked",false)
       $("#martes").prop("checked",false)
       $("#miercoles").prop("checked",false)
@@ -89,24 +115,33 @@ export class AddingProyectPage implements OnInit {
       $("#viernes").prop("checked",false)
       $("#sabado").prop("checked",false)
       $("#domingo").prop("checked",false)
-      $("#basico").prop("checked",false)
       //$("#hora_inicial").prop("checked",true)
       //this.hora_inicial = 1
       this.plan = "";
+     // this.checkbasic(false);
       $("#hora_inicial").val("").change();
       $("#hora_final").val("").change();
+      console.log("El servicio No e configurara y sin plan: ", this.plan)
     }
   }
 
   checkbasic(){
-    console.log("Plan basico: ")
-    console.log($("#basico").prop("checked"))
-    if ($("#basico").prop("checked") === false) {
+    // if () {
+    //   console.log("ya se eligio desde edificio asi que nada")
+    // }else{
+    console.log("Plan basico: ",$("#bass").prop("checked"));
+    if ($("#bass").prop("checked") === false) {
       // $("#estandar").prop("checked",false)
       // $("#pro").prop("checked",false)
       this.plan = "basico"
-      console.log("plan basico seleccionado!")
+      console.log("plan basico seleccionadooo!")
+    }else{
+      this.plan = ""
     }
+    // else{
+    //   this.plan = ""
+    // }
+   //}
   }
 
   checkstandart(){
@@ -178,14 +213,14 @@ export class AddingProyectPage implements OnInit {
         console.log("no seleccionaste plan")
         this.presentAlert("Debes seleccionar un Plan")
       }else{
-      this.hora_inicial = parseInt($("#hora_inicial").val())
-      this.hora_final = parseInt($("#hora_final").val())
+        this.hora_inicial = parseInt($("#hora_inicial").val())
+        this.hora_final = parseInt($("#hora_final").val())
       //console.log(this.hora_inicial,typeof(this.hora_inicial),this.hora_final, typeof(this.hora_final), typeof(3))
       // if(this.hora_inicial > this.hora_final){
       //      console.log("la hora inicial no puede ser menor a la final")
       //     this.presentAlert("La Hora final no puede ser menor a la hora inicial")
       // }else{
-          console.log("entre")
+          console.log("entre: ", this.plan)
           this.proyecto = $("#servicio").val()
           this.password = $("#password").val()
           // this.dias_habiles = $("#dias_habiles").val()
@@ -283,7 +318,6 @@ export class AddingProyectPage implements OnInit {
       this.firestoreService.update("Proyectos", this.proyecto,  {"citofonia": false} )
       this.firestoreService.update("Proyectos", this.proyecto,  {"votaciones": false} )
     }
-
     if(this.plan === "estandar"){
       console.log("si, estandar")
       this.firestoreService.insertar("Proyectos", this.proyecto, {"horainicial": this.hora_inicial} )
@@ -315,10 +349,8 @@ export class AddingProyectPage implements OnInit {
       this.firestoreService.update("Proyectos", this.proyecto,  {"finanzas": false} )
       this.firestoreService.update("Proyectos", this.proyecto,  {"beneficios": false} )
       this.firestoreService.update("Proyectos", this.proyecto,   {"seguridad": false} )
-      this.firestoreService.update("Proyectos", this.proyecto,  {"citofonia": false} )
-      
+      this.firestoreService.update("Proyectos", this.proyecto,  {"citofonia": false} )  
     }
-
     if(this.plan === "pro"){
       console.log("si, pro")
       this.firestoreService.insertar("Proyectos", this.proyecto, {"horainicial": this.hora_inicial} )

@@ -194,7 +194,7 @@ export class ProyectosPage implements OnInit {
           this.user_info.id = resultado.payload.id;
           this.user_info.data = resultado.payload.data();
       }
-      this.current_user_name = this.user_info.data.displayName;
+      this.current_user_name = this.user_info.data.nombre;
       this.current_user_email = this.user_info.data.email;
       this.current_user_rol = this.user_info.data.rol;
       this.current_user_activate = this.user_info.data.habilitado
@@ -328,7 +328,7 @@ async presentLoading() {
     return await modal.present();
   }
 
-  async modal_proyecto(id,reserva,pago,comunicados,documentos,monitoreo,aircall){
+  async modal_proyecto(id,reserva,pago,comunicados,documentos,monitoreo,aircall,emergencia){
     console.log(id,reserva,pago)
     const modal = await this.modalCtrl.create({
       component: InicioPage,
@@ -336,13 +336,16 @@ async presentLoading() {
       componentProps: {
         uid: this.current_user_uid,
         nombre: this.current_user_name,
+        email: this.current_user_email,
+        imageURL: this.current_user_image,
         proyecto: id,
         reserva: reserva,
         pagos: pago,
         comunicado :comunicados,
         documento: documentos,
         monitoreo: monitoreo,
-        aircall: aircall
+        aircall: aircall,
+        emergencias: emergencia
       }
     });
     modal.onDidDismiss()

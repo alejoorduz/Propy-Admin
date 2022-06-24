@@ -105,17 +105,53 @@ export class ScanPage implements OnInit {
 
     }
   }
+
+  async alert(header,subHeader,message) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      subHeader: subHeader,
+      message: message,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  check_ble_configs(){
+    this.ble.isEnabled().then(
+     data => {
+        // this.alert("Error","Problema con el Bluetooth","Debes tener el Bluetooth encendido")
+         this.ble.isLocationEnabled().then(
+             data => {
+                 //this.insertarpiso(piso,valor,viajenum)
+                 //this.setStatus('CONFIG OK')
+                    },
+             err => {
+                 console.log(err);
+                 this.alert("Error","Problema con la ubicación","Debes tener la ubicacion prendida para utilizar BLE-ACCESS")
+                    }
+            );
+     },
+     err => {
+         console.log(err);
+         this.alert("Error","Problema con el Bluetooth","Debes tener el Bluetooth encendido")
+     }
+  );
+   }
     
   scan(){
+    this.check_ble_configs();
     $(".todo").css("display","block");
     this.setStatus('Escaneando Ascensor');
     this.devices = [];  // clear list
-
     this.ble.scan([], 5).subscribe(
       device => this.onDeviceDiscovered(device), 
       error => this.scanError(error)
     );
-
     setTimeout(this.setStatus.bind(this), 5000, '');
   }
 
@@ -136,15 +172,15 @@ export class ScanPage implements OnInit {
     localStorage.setItem("uuid",deviceid);
     localStorage.setItem("use_connect","1");
     setTimeout(() => {
-        this.modalCtrl.dismiss();
-    }, 500);
+        this.modalCtrl.dismiss(true);
+    }, 300);
     }else{
       this.presentAlert();
     }
   }
 
   home(){
-    this.modalCtrl.dismiss();
+    this.modalCtrl.dismiss(false);
   }
 
   // connect(piso){
@@ -205,9 +241,9 @@ export class ScanPage implements OnInit {
   async scanError(error) {
     this.setStatus('Error ' + error);
     let toast = await this.toastCtrl.create({
-      message: 'Error scanning for Bluetooth low energy devices',
-      position: 'middle',
-      duration: 5000
+      message: 'Error escaneando dispositivos Bluetooth',
+      position: 'bottom',
+      duration: 3000
     });
     toast.present();
   }

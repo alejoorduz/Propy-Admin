@@ -695,11 +695,12 @@ details[open] summary::before {
     outline: none;
   }
   
-  #header{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  }
+  // #header{
+  //   margin-top: 40px;
+  // display: flex;
+  // justify-content: space-evenly;
+  // align-items: center;
+  // }
   
   #conectar{
     font-size: 15px;
@@ -747,10 +748,11 @@ details[open] summary::before {
     font-size: 80px;
   }
   
-  .header{
-    background-color:/*#000814; //#8d99ae; //#cddafd; //#023047; // */#326273; // rgb(102, 90, 63);
-    height: 50px;
-  }
+  // .header{
+  //  // margin-top: 40px;
+  //   background-color:/*#000814; //#8d99ae; //#cddafd; //#023047; // */#326273; // rgb(102, 90, 63);
+  //   height: 50px;
+  // }
   
 
   .tittle{
@@ -820,6 +822,7 @@ details[open] summary::before {
 
 .todo{
   //background-color: blue;
+ // margin-top: 40px;
   width: 100%;
   height: 95%;
   z-index: 10;
@@ -877,18 +880,19 @@ details[open] summary::before {
 
 .scroll-content{overflow-y: hidden;}
   
-  ion-header{
-    height: 50px;
-    font-size: 40px;
-    justify-items: center;
-    align-items: center;
-  }
+  // ion-header{
+  //  // margin-top: 40px;
+  //   height: 50px;
+  //   font-size: 40px;
+  //   justify-items: center;
+  //   align-items: center;
+  // }
 
  
   ion-footer{
     display: flex;
     color: white;
-    height: 50px;
+    height: 100px;
     font-size: 20px;
     justify-items: center;
     align-items: center;
@@ -1084,4 +1088,50 @@ details[open] summary::before {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.edit_floors{
+  border: solid 1px black;
+  width: 100%;
+  height: 200px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle_edit{
+  width: 100%;
+  height: 50px;
+  border: 1px solid black;
+  font-size: 22px;
+  outline: none;
+  padding: 1rem;
+  display: block;
+  background: #4f8599;
+  color: black;
+  padding-left: 4.2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.headercontainer{
+  width: 100%;
+  height: 60px;
+  display: flex;
+}
+
+.headertittle{
+  margin-top: 20px;
+   width: 60%;
+   height: 40px;
+   text-align: center;
+   color: black;
+ }
+
+ ion-header{
+  background-color: #326273;
+  color: black;
+  justify-items: center;
+  align-items: center;
 }

@@ -19,16 +19,22 @@
 <div class="divform">
   <div class="formulario">
      <label>
-      <strong>Nombre del Negocio</strong> 
+      <strong>Nombre del Edificio/Negocio</strong> 
      </label>
   <label class="formulario__label" style="font-size: 10px;">
     <i>(Recuerda poner las mayusculas y tildes)</i>
   </label>
   <br>
-    <ion-item class="input_box" lines="none">
-    <ion-label class="formulario__label" position="floating" >Nombre</ion-label>
-    <ion-input type="text" id="servicio" placeholder="ej: Edificio,Restaurante" name="servicio" [value]="servicio"></ion-input>
+  <div class="div_email">
+    <ion-item class="email" lines="none" mode="ios">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" id="servicio"  placeholder="ej: Edificio Sol" name="servicio" [value]="servicio"></ion-input>
     </ion-item>
+    </div>
+    <!-- <ion-item class="input_box" lines="none" mode="ios">
+      <ion-label class="formulario__label" position="floating" >Nombre</ion-label>
+      <ion-input type="text" id="servicio" placeholder="ej: Edificio,Restaurante" name="servicio" [value]="servicio"></ion-input>
+    </ion-item> -->
   </div>
 
   <div class="formulario">
@@ -39,10 +45,16 @@
     <i>(Con esta contraseña los usuarios accederán a tu negocio)</i>
   </label>
    <br>
-    <ion-item class="input_box" lines="none">
+   <div class="div_email">
+    <ion-item class="email" lines="none" mode="ios">
+      <ion-label position="floating">Contraseña o Codigo</ion-label>
+      <ion-input type="text" id="password" placeholder="ej: Torre-Sol.2022" name="password" [value]="password" #email required ></ion-input>
+    </ion-item>
+    </div>
+    <!-- <ion-item class="input_box" lines="none" mode="ios">
     <ion-label class="formulario__label" position="floating" >Contraseña o codigo</ion-label>
     <ion-input type="text" id="password" placeholder="ej: Torre-Sol.2022" name="password" [value]="password"></ion-input>
-    </ion-item>
+    </ion-item> -->
   </div>
 <!-- <ion-icon class="info_icon" name="information-circle-outline"></ion-icon> -->
   <!-- <div class="service_one">
@@ -137,7 +149,6 @@
         <!-- <ion-datetime class="datetime" presentation="time" ></ion-datetime> -->
         <!-- <ion-label>Fin</ion-label> -->
         <ion-select  placeholder="Hora final" id="hora_final" class="ion-select-mes" [(ngModel)]="hora_final">
-    
           <ion-select-option value="1">1 AM</ion-select-option>
           <ion-select-option value="2">2 AM</ion-select-option>
           <ion-select-option value="3">3 AM</ion-select-option>
@@ -176,7 +187,7 @@
     <div class="service_selector">
         <div class="service">
           <h1 class="letra" (click)="presentBasic()"> <ion-icon class="info_icon" name="information-circle-outline"></ion-icon>Plan Básico</h1>
-          <ion-checkbox color="primary" id="basico" (click)="checkbasic()"></ion-checkbox>
+          <ion-checkbox color="primary" id="bass" (click)="checkbasic()"></ion-checkbox>
         </div>
         <!-- <div class="service">
           <h1 class="letra">Pagos</h1>

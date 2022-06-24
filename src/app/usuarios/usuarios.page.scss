@@ -330,10 +330,22 @@ ion-header{
   }
 
   .input{
-    height: 100%;
-    width: 45%;
-    border: solid black 1px;
-    border-radius: 30px;
+    font-size: 15px;
+    align-self: center;
+    width: 95px;
+    height: 60px;
+    //max-width: 400px;
+    //background-color: red;
+   // margin-top: 50px;
+    color: black;
+    border: solid rgb(91, 5, 148) 1px;
+    border-radius: 20px;
+    --background: white;
+    --border-radius: 20px;
+    // height: 100%;
+    // width: 45%;
+    // border: solid black 1px;
+    // border-radius: 30px;
   }
 
   .habil_button{

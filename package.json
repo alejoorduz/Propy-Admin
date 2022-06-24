@@ -106,7 +106,10 @@
         "GPS_REQUIRED": "true"
       },
       "cordova-plugin-ble-central": {
-        "ACCESS_BACKGROUND_LOCATION": "false"
+        "ACCESS_BACKGROUND_LOCATION": "false",
+        "IOS_INIT_ON_LOAD": "true",
+        "BLUETOOTH_RESTORE_STATE": "false",
+        "BLUETOOTH_USAGE_DESCRIPTION": " "
       },
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
@@ -123,7 +126,8 @@
       "mx.ferreyra.callnumber": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
