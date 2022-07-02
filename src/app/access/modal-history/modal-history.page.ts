@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, NgZone } from '@angular/core';
-import { FirestoreService } from '../firestore.service';
+import { FirestoreService } from '../../firestore.service';
 import * as $ from "jquery";
 import { ToastController,AlertController,ModalController } from '@ionic/angular';
 import { BLE } from '@ionic-native/ble/ngx';
+import { TablePage } from "../table/table.page";
 
 //_____________________________________________________________
 const BLE_SERVICE = "ffe0";
@@ -10,12 +11,11 @@ const BLE_CHARACTERISTIC = "ffe1";
 //____________________________________________________________
 
 @Component({
-  selector: 'app-acceso',
-  templateUrl: './acceso.page.html',
-  styleUrls: ['./acceso.page.scss'],
+  selector: 'app-modal-history',
+  templateUrl: './modal-history.page.html',
+  styleUrls: ['./modal-history.page.scss'],
 })
-export class AccesoPage implements OnInit {
-
+export class ModalHistoryPage implements OnInit {
   statusMessage: string;
   devices:any[] = [];
 
@@ -23,7 +23,13 @@ export class AccesoPage implements OnInit {
   @Input() uid
   @Input() nombre
   @Input() proyecto
- 
+  @Input() puerta;
+  
+dias: any = {
+    id: "",
+    data: {}
+};
+
 uuid = "";
   //test in aircall :  a8a7e679-3a55-1702-464c-c1dc2d0dd6ea
   // comunicados  = [
@@ -56,12 +62,12 @@ uuid = "";
   tarjeteros = [];
 
   ngOnInit() {
-    console.log("aja: ", this.uid,this.nombre,this.proyecto)
+    console.log("aja: ", this.uid,this.nombre,this.proyecto,this.puerta)
     this.get_comunicados();
   }
 
   get_comunicados(){
-    this.fbs.consultar("/Proyectos/"+this.proyecto+"/acceso").subscribe((servicios) => {
+    this.fbs.consultar("Proyectos/"+this.proyecto+"/accesshistory/"+this.puerta+"/dias").subscribe((servicios) => {
       this.tarjeteros = [];
       servicios.forEach((datosTarea: any) => {
         this.tarjeteros.push({
@@ -240,6 +246,32 @@ uuid = "";
     this.ngZone.run(() => {
       this.statusMessage = message;
     });
+  }
+
+  async modal_table(dia){
+    const modal = await this.modalCtrl.create({
+      component: TablePage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        puerta: this.puerta,
+        dia: dia
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me cierro")
+      } 
+  });
+    return await modal.present();
   }
 
   dismiss(){

@@ -91,7 +91,6 @@ redirectUser(isverified:boolean = true){
 crear_cuenta(){
   console.log("Crear Cuenta")
   this.router.navigate(['register']);
-  //this.router.navigate(['register']);
 }
 
 recuperacion(){

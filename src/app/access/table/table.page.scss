@@ -1,0 +1,320 @@
+body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+  }
+  
+  .header .col {
+    background-color:#419f00;
+    color: black
+  }
+  //#409dc4
+  
+  .container {
+    border: solid 1px black;
+    font-size: 30px;
+    //border-bottom-style: none;
+    //border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(175, 130, 226, 0.582);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .etiqueta{
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .row_header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .row{
+    //background-color: aqua;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .colid {
+    border: solid 1px black;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    background-color: rgba(154, 91, 226, 0.811);
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .colids {
+    border: solid 1px black;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    background-color: rgba(201, 174, 233, 0.492);
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .colfecha {
+    border: solid 1px black;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    background-color: rgba(154, 91, 226, 0.811);
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .colfechas {
+    border: solid 1px black;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    background-color: rgba(201, 174, 233, 0.492);
+    font-size: 12px;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .colsalida {
+    border: solid 1px black;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    background-color: rgba(154, 91, 226, 0.811);
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .colsalidas {
+    border: solid 1px black;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    background-color: rgba(201, 174, 233, 0.492);
+    font-size: 12px;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .colentrada {
+    border: solid 1px black;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    background-color: rgba(154, 91, 226, 0.811);
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .colentradas {
+    border: solid 1px black;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-emphasis: center;
+    color: black;
+    text-align: center;
+    background-color: rgba(201, 174, 233, 0.492);
+    font-size: 12px;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .col:last-child {
+    border-right: solid 1px black;
+  }
+  
+  .row:last-child .col {
+    border-bottom: solid 1px black;
+  }
+  
+  .bot{
+    font-size: 15px;
+    border: 3px solid black;
+    border-radius: 25px;
+    //box-shadow: -8px 20px #419f00;
+    color: black;
+    width: 100px;
+    height: 30px;
+    background-color: #c7eb7a;
+    //position: absolute;
+    //bottom: 25%;
+    //left: 35%; 
+   }
+  
+  //-------
+  
+  
+  .tittle{
+      color: black;
+      font-size: 20px;
+      text-align: center;
+      //align-items: center;  //siempre van a ser del contenedor al igual que align-contect
+      //display: flex;
+     // background-color: #CBCBCB;
+     // font-family: 'Questrial';
+    }
+  
+    .lista{
+        background-color: transparent;
+    }
+  
+  
+  .labelid{
+    //background-color: brown;
+    width: 30%;
+    font-size: 25px;
+   }
+  
+   .botones{
+     width: 100%;
+     display: flex;
+     justify-content: space-evenly;
+     height: 50px;
+     padding: 10px;
+     //background-color: pink;
+   }
+  
+  
+  .botones:active {
+     // background-color: #66bde6  ;
+      box-shadow: 0 5px #666;
+      transform: translateY(6px);
+    }
+    
+    .botones:focus {
+       background-color: #e3f59b; 
+    }
+  
+    ion-item{
+      font-size: 20px;
+      color: black;
+    
+    }
+  
+    ion-label{
+      background-color: transparent;
+      text-align: center;
+      font-size: 50px;
+      color: black;
+    }
+  
+  ion-content {
+     // --background:#66bde6;
+     --background: white;
+    }
+    
+    // ion-header{
+    //   height: 30vh;
+    //   font-size: 40px;
+    //   justify-items: center;
+    //   align-items: center;
+    //   //box-shadow: 0 20px #8bd3f8;
+    //   border-bottom: 2px solid black;
+    // }
+  
+    ion-toolbar {
+      --background: transparent;
+      --ion-color-base: transparent !important;
+      }
+  
+      .headercontainer{
+        width: 100%;
+        height: 60px;
+        display: flex;
+      }
+
+      .iconoback{
+        margin-top: 10px;
+        width: 80%;
+        height: 80%;
+        color: black;
+      }
+
+      .back{
+        width: 20%;
+        height: 40px;   
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+      
+      .headertittle{
+        margin-top: 20px;
+         width: 60%;
+         height: 40px;
+         text-align: center;
+         color: black;
+       }
+      
+       ion-header{
+        background-color: white;
+        color: black;
+        justify-items: center;
+        align-items: center;
+      }
+  
+  /*Escala de Verdes
+  #419f00 mas oscuro
+  #4eaa03
+  #5ab507
+  #66c00b
+  #72cb10
+  #89d631
+  #a9e159
+  #c7eb7a
+  #e3f59b
+  #ffffbb mas claro
+  */

@@ -26,10 +26,10 @@ import { BeneficiosPage } from "../beneficios/beneficios.page";
 import { AutorizacionesPage } from "../autorizaciones/autorizaciones.page";
 import { SeguridadPage } from "../seguridad/seguridad.page";
 import { PreguntasPage } from "../preguntas/preguntas.page";
-import { AccesoPage } from "../acceso/acceso.page";
+import { AccesoPage } from "../access/acceso/acceso.page";
 import { EventosPage } from "../eventos/eventos.page";
 import { CitofoniaPage } from "../citofonia/citofonia.page";
-import { VotacionesPage } from "../votaciones/votaciones.page";
+import { VotacionesPage } from "../voting/votaciones/votaciones.page";
 import { AlertController } from '@ionic/angular';
 import { InfoPage } from "../info/info.page";
 
@@ -685,7 +685,7 @@ this.monitor[2].habilitado = this.proyect_services.data.citofonia;
     });
     modal.onDidDismiss()
     .then((data) => {
-      console.log("esta es la data que devuelve el modal")
+      console.log("esta es la data que devuelve el mol")
       console.log(data)
       var closing = data['data'];
       if (closing) {
@@ -706,7 +706,8 @@ this.monitor[2].habilitado = this.proyect_services.data.citofonia;
         uid: this.uid,
         nombre: this.nombre,
         proyecto: this.proyecto,
-        //reserva: this.reserva
+        apto: "",
+        torre: ""
       }
     });
     modal.onDidDismiss()

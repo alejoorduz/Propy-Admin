@@ -5,6 +5,8 @@ import { AlertController,ModalController } from '@ionic/angular';
 import { InfoPage } from "../info/info.page";
 //import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { OpenLinkPage } from '../open-link/open-link.page';
+//import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 
 @Component({
@@ -16,6 +18,7 @@ export class EncuestasPage implements OnInit {
 
   constructor(
     //private iab: InAppBrowser,
+    private iab: InAppBrowser,
     private fbs: FirestoreService,
     private modalCtrl: ModalController ,
     public alertController: AlertController) { }
@@ -179,10 +182,9 @@ export class EncuestasPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-    async GoToURL(url){
-     //const browser = this.iab.create(url,'_self',{location:'no'});
-    // var ref = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
-  }
+  async GoToURL(url){
+    const browser = this.iab.create(url,'_system',{location:'yes'});
+ }
 
   async modal_info(url){
     console.log(url)

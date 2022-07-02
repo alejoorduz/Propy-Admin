@@ -23,19 +23,24 @@
 
 <div class="todo">
     <div class="ver_comunicados">
-            <h1 class="texto"><strong>{{this.proyecto}}</strong></h1>
-            <!-- <h1 class="texto"></h1> -->
+            <h1 class="texto"><strong>{{this.puerta}}</strong></h1>
+          
             <ion-grid class="grid">
               <ion-col class="col">
                 <ion-row class="row" *ngFor="let tarjetero of tarjeteros">
-                    <div class="card" tabindex="1" (click)="Connected(tarjetero.data.nombre,tarjetero.data.uid,tarjetero.data.clave)">
+                  <!-- <h1 class="texto">
+                    <button (click)="modal_votaciones(tarjetero.data.nombre)" class="boton_actividad" >
+                      Ver actividad
+                    </button>
+                  </h1> -->
+                    <div class="card" tabindex="1" (click)="modal_table(tarjetero.id)">
                       <div class="imagen">
-                        <ion-icon class="img-icon" name="wifi-outline"></ion-icon>
+                        <ion-icon class="img-icon" name="calendar-outline"></ion-icon>
                       </div>
                       <div class="card-inner">
                       <div class="top">
                         <div class="titulo">  
-                          <strong>{{ tarjetero.data.nombre }}</strong>  
+                          <strong>{{tarjetero.id}}</strong>  
                         </div>
                         <!-- <div class="dia_hora">  
                           <div class="dia">

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FirestoreService } from '../firestore.service';
+import { FirestoreService } from '../../firestore.service';
 import * as $ from "jquery";
 import { AlertController,ModalController } from '@ionic/angular';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import {  VoteInfoPage} from "../vote-info/vote-info.page";
 
 @Component({
   selector: 'app-votaciones',
@@ -15,7 +16,8 @@ export class VotacionesPage implements OnInit {
   @Input() uid
   @Input() nombre
   @Input() proyecto
-
+  @Input() apto
+  @Input() torre
   pregunta;
   numero;
  
@@ -168,10 +170,39 @@ export class VotacionesPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  async modal_votes(id){
+    const modal = await this.modalCtrl.create({
+      component: VoteInfoPage,
+      cssClass: 'adding_modal',
+      componentProps: {
+        id: id,
+        uid: this.uid,
+        nombre: this.nombre,
+        proyecto: this.proyecto,
+        apto: this.apto,
+        torre: this.torre
+      }
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("esta es la data que devuelve el modal")
+      console.log(data)
+      var closing = data['data'];
+      if (closing) {
+        this.modalCtrl.dismiss()
+      }else{
+        console.log("no me deberia estar cierrando")
+      } 
+  });
+    return await modal.present();
+  }
+
   delete(comunicado){
-    //console.log("borrando base de datos de",this.current_user_uid,  " del proyecto ",proyecto)
-    this.fbs.delete_doc("Proyectos/"+this.proyecto+"/directorio", comunicado).then(() => {
-    })
+    const res = confirm("¿Estás seguro que quieres borrar esta votación?");
+    if(res){
+       this.fbs.delete_doc("Proyectos/"+this.proyecto+"/votaciones", comunicado).then(() => {
+     })
+    }
    }
 }
 

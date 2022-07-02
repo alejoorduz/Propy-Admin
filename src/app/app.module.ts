@@ -4,6 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
 //import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -56,7 +57,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-co
     BLE,CallNumber,
     Geolocation,
     LocalNotifications,
-   // InAppBrowser,
+    InAppBrowser,
     Storage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

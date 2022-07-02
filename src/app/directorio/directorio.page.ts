@@ -172,9 +172,11 @@ export class DirectorioPage implements OnInit {
   }
 
   delete(comunicado){
-    //console.log("borrando base de datos de",this.current_user_uid,  " del proyecto ",proyecto)
-    this.fbs.delete_doc("Proyectos/"+this.proyecto+"/directorio", comunicado).then(() => {
-    })
+    const res = confirm("¿Estás seguro que quieres borrar este número?");
+    if(res){
+       this.fbs.delete_doc("Proyectos/"+this.proyecto+"/directorio", comunicado).then(() => {
+     })
+    }
    }
 }
 

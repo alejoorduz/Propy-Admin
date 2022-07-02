@@ -2,6 +2,9 @@
   <ion-toolbar>
       <div class="headercontainer">
       <div class="back">
+        <div class="back">
+          <ion-icon name="arrow-back" class="iconoback" (click)="inicio()"></ion-icon>
+        </div>
       </div>
       <div class="headertittle">
         <ion-title >Registrate</ion-title>
@@ -13,42 +16,41 @@
 </ion-header>
 
 <ion-content>
- 
   <form>
       <div class="div_email">
-      <ion-item class="email" mode='ios' lines="none">
-        <ion-label position="floating">Nombre y Apellido</ion-label>
-        <ion-input id="nombre" type="text" #nombre required></ion-input>
-      </ion-item>
-      </div>
-    <div class="div_email">
-      <ion-item class="email" mode='ios' lines="none">
-        <ion-label position="floating">Email</ion-label>
-        <ion-input id="email" type="text" #email required></ion-input>
-      </ion-item>
-      </div>
-      <div class="div_email" >
-        <ion-item class="email" mode='ios' lines="none">
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input id="contra" type="password" #password required></ion-input>
-        </ion-item>
+          <ion-item class="email" mode='ios' lines="none">
+            <ion-label position="floating">Nombre y Apellido</ion-label>
+            <ion-input id="nombre" type="text" #nombre required></ion-input>
+          </ion-item>
       </div>
       <div class="div_email">
-        <ion-item class="email" mode='ios' lines="none">
-          <ion-label position="floating">Verificar contraseña</ion-label>
-          <ion-input id="contra_rep" type="password" #password_double required></ion-input>
-        </ion-item>
+          <ion-item class="email" mode='ios' lines="none">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input id="email" type="text" #email required></ion-input>
+          </ion-item>
+      </div>
+      <div class="div_email" >
+          <ion-item class="email" mode='ios' lines="none">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input id="contra" type="password" #password required></ion-input>
+          </ion-item>
+      </div>
+      <div class="div_email">
+          <ion-item class="email" mode='ios' lines="none">
+            <ion-label position="floating">Verificar contraseña</ion-label>
+            <ion-input id="contra_rep" type="password" #password_double required></ion-input>
+          </ion-item>
       </div>
       <div class="div_login">
-    <ion-row>
-      <ion-col>
-        <button type="submit" class="submit" (click)="onRegister(email,password,nombre)">
-          Registrame
-        </button>
-      </ion-col>
-    </ion-row>
-</div>
-  </form>
+          <ion-row>
+            <ion-col>
+              <button type="submit" class="submit" (click)="onRegister(email,password,nombre)">
+                Registrame
+              </button>
+            </ion-col>
+          </ion-row>
+      </div>
+   </form>
 <div class="div_account">
   <p>
     <a (click)="inicio()">Ya tengo una cuenta</a>
